@@ -1,0 +1,431 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Roboto Mono', monospace;
+    counter-reset: chapternum figurenum;
+    margin: 0;
+}
+
+@page {
+    size: A4;
+}
+
+.wrapper {
+    width: 100%;
+}
+
+.coverimage {
+    position: relative;
+    display: none;
+}
+
+.coverText {
+    position: absolute;
+    color: #000;
+    bottom: 50px;
+    right: 17%;
+}
+
+.coverText h4 {
+    font-size: 19px;
+    font-weight: 400;
+}
+
+.coverText h4 strong {
+    display: block;
+    font-weight: bold;
+}
+
+.coverText p {
+    margin: 0;
+    font-size: 15px;
+}
+
+.datacard {
+    padding: 10px 10px;
+    background: #f5f5f5;
+}
+
+.mainbox {
+    width: 100%;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.map,
+.countrydetails,
+.textData {
+    background: #fff;
+    border-radius: 5px;
+    padding: 15px 20px;
+
+    -webkit-box-shadow: 0px 3px 10px 1px rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0px 3px 10px 1px rgba(0, 0, 0, 0.19);
+    box-shadow: 0px 3px 10px 1px rgba(0, 0, 0, 0.19);
+}
+
+.map {
+    width: 26%;
+}
+
+.countrydetails {
+    width: 43%;
+    margin: 0 2%;
+}
+
+.textData {
+    width: 30%;
+}
+
+.countrydetails h1,
+.textData h1 {
+    font-size: 23px;
+    color: #1f2937;
+    font-weight: 600;
+    margin: 6px 0 25px;
+}
+
+.mainbox ul {
+    padding: 0;
+    margin: 0;
+}
+
+.mainbox ul li {
+    position: relative;
+    list-style: none;
+    padding: 0 0 0 35px;
+    margin: 0 0 30px;
+}
+
+.mainbox ul li:nth-child(3) p{
+    margin: 15px 0 10px;
+}
+
+.mainbox ul li img {
+    position: absolute;
+    left: 0;
+    top: 3px;
+}
+
+.mainbox ul li h3 {
+    font-size: 17px;
+    color: #1f2937;
+    font-weight: 600;
+    margin: 0;
+}
+
+.noteimg {
+    position: relative !important;
+}
+
+.mainbox ul li p {
+    font-size: 17px;
+    color: #1f2937;
+    font-weight: 400;
+    margin: 5px 0 0;
+}
+
+p a {
+    color: #3d9be9;
+    text-decoration: none;
+}
+
+.mainbox ul li span {
+    font-size: 16px;
+    color: #a7a7a7;
+    font-weight: 400;
+    margin: 15px 0 10px;
+    display: block;
+}
+
+.mainbox ul li select {
+    width: 150px;
+    color: #03A9F4;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.mainbox ul li label.lb1 {
+    background: #fef5e6;
+    color: #f8a90b;
+    padding: 5px 12px 7px;
+    border-radius: 11px;
+    font-size: 14px;
+}
+
+.lb2 {
+    display: flex;
+}
+
+.lb2 label {
+    background: transparent;
+    color: #f59e0b;
+    padding: 4px 12px 6px;
+    border-radius: 9px;
+    font-size: 14px;
+    border: 1px solid #f59e0b;
+    margin: -1px 0 0 20px;
+}
+
+.lavelindic {
+    width: 100%;
+    margin: 10px 0 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.lavelindic div {
+    height: 5px;
+    background: #b91c1c;
+    margin-right: 2px;
+    width: 20%;
+    border-radius: 5px;
+}
+
+
+/* ======== site report ============ */
+.siteReport {
+    width: 100%;
+    height: 1280px;
+    background: #f5f5f5;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 3px 10px 1px rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0px 3px 10px 1px rgba(0, 0, 0, 0.19);
+    box-shadow: 0px 3px 10px 1px rgba(0, 0, 0, 0.19);
+
+    
+    box-sizing: border-box;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    position: relative;
+    padding: 90px;    
+    display: none;
+}
+
+.reportmap {
+    width: 100%;
+    height: 850px;
+}
+.reportmap img{
+    width: 100%;
+    height: 100%;
+}
+
+.sitereportText {
+   width: 75%;
+    margin: auto;
+    padding: 40px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #fffffff2;
+    position: absolute;
+    bottom: 100px;
+    left: 0;
+    right: 0;
+    border-radius: 13px;
+}
+.sitereportText div:nth-child(2){
+    margin-top: 70px;
+}
+
+.sitereportText h1 {
+    font-size: 30px;
+    margin: 0 0 30px;
+}
+
+.sitereportText ul {
+    margin: 0;
+    padding: 0;
+}
+
+.sitereportText ul li {
+    color: #787878;
+    font-size: 15px;
+    font-weight: 400;
+    list-style: none;
+    margin: 10px 0 0;
+    display: flex;
+    align-items: center;
+}
+
+.sitereportText ul li:nth-child(1) {
+    color: #297cc1;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0 0 0;
+}
+
+.sitereportText ul li:nth-child(2) {
+    color: #f59e0b;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.sitereportText ul li img {
+    margin-right: 7px;
+}
+
+.sitereportText h4 {
+    color: #3d9be9;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0 0 0;
+}
+
+.sitereportText p {
+    color: #787878;
+    font-size: 14px;
+    font-weight: 400;
+    list-style: none;
+    margin: 10px 0 0;
+}
+
+.sitereportText p strong {
+    font-weight: 800;
+}
+.mainbox ul.countryLeft li{
+    margin: 0 0 40px;
+}
+
+@media print {
+    .coverimage {
+        position: relative;
+        display: block;
+    }
+
+    .map {
+        width: 30%;
+    }
+
+    .countrydetails {
+        width: 45%;
+        margin: 0 2%;
+    }
+
+    .textData {
+        width: 30%;
+    }
+
+    .mainbox {
+        padding: 10px;
+        margin-bottom: 25px;
+    }
+
+    .map,
+    .countrydetails,
+    .textData {
+        padding: 11px 10px;
+    }
+
+    .countrydetails h1,
+    .textData h1 {
+        font-size: 23px;
+        margin: 5px 0 15px;
+    }
+
+    .mainbox ul li {
+        padding: 0 0 0 20px;
+        margin: 0 0 22px;
+    }
+
+    .mainbox ul li:last-child {
+        margin: 0;
+    }
+
+    .mainbox ul li h3 {
+        font-size: 16px;
+    }
+
+    .mainbox ul li p {
+        font-size: 15px;
+        margin: 7px 0 0;
+    }
+
+    .mainbox ul li select {
+        width: 110px;
+        font-size: 12px;
+    }
+
+    .mainbox ul li label.lb1 {
+        padding: 5px 12px 7px;
+        font-size: 12px;
+        color: #f8a90b;
+    }
+
+    .mainbox ul li img {
+        width: 13px;
+    }
+
+    .mainbox ul li span {
+        font-size: 15px;
+        margin: 5px 0 5px;
+    }
+
+    .lb2 label {
+        padding: 2px 5px 3px;
+        border-radius: 7px;
+        font-size: 10px;
+        margin: -1px 0 0 10px;
+    }
+
+    .noteimg {
+        width: 11px;
+    }
+
+    .lavelindic {
+        width: 100%;
+        margin: 8px 0 0;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .lavelindic {
+        margin: 10px 0 0;
+    }
+
+    .lavelindic div {
+        height: 4px;
+        margin-right: 2px;
+        width: 22%;
+    }
+    .reportmap{
+        width: 100%;
+    }
+    .reportmap img{
+        width: 100%;
+    }
+    .siteReport {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        box-shadow:none;
+        border-radius: 0;
+    }
+    .sitereportText {
+        width: 70%;
+    }
+    .reportmap iframe{
+        width: 100%;
+    }
+    .siteReport{
+        display: block;
+    }
+    .datacard {
+        padding: 10px 10px;
+        background: #fff;
+    }
+    .mainbox ul.countryLeft li{
+        margin: 0 0 35px;
+    }
+}

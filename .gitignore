@@ -1,0 +1,4 @@
+node_modules/
+templates/report-tailwind.html
+templates/report-inline.html
+.vscode/launch.json
