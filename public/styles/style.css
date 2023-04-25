@@ -17,7 +17,8 @@ body {
 
 .coverimage {
     position: relative;
-    height: 297mm;
+    min-height: 11.69in;
+    height: 11.69in;
     width: 100%;
 }
 .coverimage img{
@@ -52,9 +53,6 @@ body {
     height: 294mm;
     width: 100%;
     background: #fff;
-    -webkit-box-shadow: 0px 3px 10px 1px rgba(0, 0, 0, 0.19);
-    -moz-box-shadow: 0px 3px 10px 1px rgba(0, 0, 0, 0.19);
-    box-shadow: 0px 3px 10px 1px rgba(0, 0, 0, 0.19);
 
     
     box-sizing: border-box;
@@ -152,7 +150,7 @@ body {
 
 .datacard {
     width: 100%;
-    padding-top: 15px;
+    padding: 15px 5px 0;
     box-sizing: border-box;
     page-break-before: always;
     page-break-after: avoid;
