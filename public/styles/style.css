@@ -34,7 +34,7 @@ body {
 }
 
 .coverText h4 {
-    font-size: 15px;
+    font-size: 12pt;
     font-weight: 400;
 }
 
@@ -45,7 +45,7 @@ body {
 
 .coverText p {
     margin: 0;
-    font-size: 13px;
+    font-size: 10pt;
 }
 
 /* ======== site report ============ */
@@ -218,13 +218,13 @@ float: left;
 }
 
 .mainbox h1 {
-    font-size: 20px;
+    font-size: 15pt;
     color: #1f2937;
     font-weight: 500;
     margin: 0;
 }
 .mainbox h4 {
-    font-size: 16px;
+    font-size: 12pt;
     color: #1f2937;
     font-weight: 400;
     margin: 3px 0 7px;
@@ -251,7 +251,7 @@ float: left;
 }
 
 .mainbox ul li h3 {
-    font-size: 14px;
+    font-size: 10.5pt;
     color: #1f2937;
     font-weight: 500;
     margin: 0;
@@ -263,8 +263,8 @@ float: left;
 }
 
 .mainbox ul li p {
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 10.5pt;
+    line-height: 16pt;
     color: #1f2937;
     font-weight: 400;
     margin: 7px 0 0;
@@ -310,7 +310,7 @@ p a {
     color: #f59e0b;
     padding: 4px 7px 6px;
     border-radius: 9px;
-    font-size: 12px;
+    font-size: 8pt;
     border: 1px solid #f59e0b;
     margin: -1px 0 0 20px;
     position: absolute;
