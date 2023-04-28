@@ -24,6 +24,16 @@ const generatePDF = asyncHandler(async (req, res) => {
       format: "A4",
       orientation: "portrait",
       // border: "10mm",
+      pageFormats: {
+        // A4: {
+        //   width: "210mm",
+        //   height: "297mm",
+        // },
+        // A4: {
+        //   width: "210mm",
+        //   height: "297mm",
+        // },
+      },
     };
 
     const users = [
