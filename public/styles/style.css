@@ -1,23 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 body {
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Poppins', sans-serif;
     counter-reset: chapternum figurenum;
     margin: 0;    
     box-sizing: border-box;
     height: 100vh;
+    padding: 15px;
+
 }
 
 .coverimage {
     position: relative;
     min-height: 210mm;
-    height: 297mm;
+    height: 289mm;
     width: 100%;
     page-break-after: avoid;
 }
 .coverimage img{
     width: 100%;
-    height: 297mm;
+    height: 289mm;
     margin: 0;
 }
 
@@ -133,14 +135,14 @@ body {
 
 .sitereportText p {
     color: #787878;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 400;
     list-style: none;
     margin: 10px 0 0;
 }
 
 .sitereportText p strong {
-    font-weight: 800;
+    font-weight: 600;
 }
 
 .datacard {
@@ -155,30 +157,28 @@ body {
     width: 100%;
     background: #fff;
     box-sizing: border-box;
-    margin-top: 15px;
-    height: 94mm;
+    margin-top: 11px;
+    padding-bottom: 11px;
+    height: 95mm;
+    border-bottom: 2px solid #000;
 }
 .datacard div:first-child{
     margin-top: 0px;
 }
 .datacard div.mainbox:nth-child(3n) {
     page-break-after: always;
+    border-bottom: none;
   }
 
 .map,
-.countrydetails,
-.textData {
-    height: 88mm;
+.countrydetails{
+    height: 92mm;
     background: #F9FAFB;
-    border-radius: 5px;
-    -webkit-box-shadow: 0px 3px 13px 1px rgba(0,0,0,0.67);
--moz-box-shadow: 0px 3px 13px 1px rgba(0,0,0,0.67);
-box-shadow: 0px 3px 13px 1px rgba(0,0,0,0.67);
-float: left;
+    float: left;
 }
 
 .map {
-    width: 26%;
+    width: 37%;
     overflow: hidden;
 }
 .map img{
@@ -188,20 +188,16 @@ float: left;
 }
 
 .countrydetails {
-    width: 38%;
-    margin: 0 2%;
-    padding: 10px 15px;
+    width: 63%;
+    padding: 0 20px;
     box-sizing: border-box;
 }
 
-.textData {
-    width: 32%;
-    padding: 10px 15px;
-    box-sizing: border-box;
-}
 .cardfooter{
-    float: left;
     width: 100%;
+    height: 5px;
+    position: relative;
+    bottom: 14px;
 }
 .cardfooter p{
     text-align: right;
@@ -209,60 +205,58 @@ float: left;
     line-height: 20px;
     color: #646464;
     font-weight: 500;
-    margin: 4px 0 0;
+    margin: 0;
 }
 
 .mainbox h1 {
-    font-size: 15pt;
+    font-size: 14pt;
     color: #1f2937;
-    font-weight: 500;
+    font-weight: 600;
     margin: 0;
 }
 .mainbox h4 {
     font-size: 12pt;
-    color: #1f2937;
-    font-weight: 400;
-    margin: 3px 0 7px;
+    color: #2a3442;
+    font-weight: 500;
+    margin: 1px 0 5px;
 }
-.mainbox ul {
-    padding: 0;
-    margin: 0;
-}
-
-.mainbox ul li {
+.cardtext {
+    padding: 0 0 0 25px;
+    margin: 0 0 10px;
     position: relative;
-    list-style: none;
-    padding: 0 0 0 30px;
-    margin: 0 0 20px;
     width: 100%;
     float: left;
     box-sizing: border-box;
 }
+.cardtext:last-child{
+    margin: 0 ;
+}
 
-.mainbox ul li img {
+.cardtext > img {
     position: absolute;
     left: 0;
     top: 2px;
+    width: 18px;
 }
 
-.mainbox ul li h3 {
-    font-size: 10.5pt;
+.cardtext h3 {
+    font-size: 13px;
     color: #1f2937;
-    font-weight: 500;
+    font-weight: 600;
     margin: 0;
 }
 
 .noteimg {
-    width: 16px;
+    width: 13px;
     position: relative !important;
 }
 
-.mainbox ul li p {
+.cardtext p {
     font-size: 10.5pt;
     line-height: 16pt;
     color: #1f2937;
     font-weight: 400;
-    margin: 7px 0 0;
+    margin:0;
 }
 
 p a {
@@ -270,64 +264,24 @@ p a {
     text-decoration: none;
 }
 
-.mainbox ul li span {
-    font-size: 16px;
-    color: #a7a7a7;
-    font-weight: 400;
-    margin: 15px 0 10px;
-    display: block;
-}
-
-.mainbox ul li select {
-    width: 150px;
-    color: #03A9F4;
-    font-family: 'Roboto Mono', monospace;
-    font-size: 14px;
-    padding: 4px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.mainbox ul li label.lb1 {
-    background: #fef5e6;
-    color: #f8a90b;
-    padding: 5px 12px 7px;
-    border-radius: 11px;
-    font-size: 14px;
-}
-
-.lb2 {
-    width: 100%;
-    position: relative;
-}
-.lb2 label {
-    background: transparent;
-    color: #f59e0b;
-    padding: 4px 7px 6px;
-    border-radius: 9px;
-    font-size: 8pt;
-    border: 1px solid #f59e0b;
-    margin: -1px 0 0 20px;
-    position: absolute;
-    top: -3px;
-    right: 0;
-}
-
 .lavelindic {
     width: 100%;
-    margin: 10px 0 0;
-    float: left;
+    position: relative;
+    top: -12px;
+    margin-bottom: 12px;
 }
 
 .lavelindic div {
-    height: 3px;
-    background: #b91c1c;
-    margin-right: 2px;
+    height: 2px;
+    margin-right: 5px;
     width: 18%;
     border-radius: 5px;
     float: left;
 }
-
-
+.lavelindic div img{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
 
 
