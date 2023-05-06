@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import pdf from "pdf-creator-node";
 import puppeteer from "puppeteer";
+import handlebars from "handlebars";
 
 // @desc    Generate PDF
 // @route   GET /api/generate-pdf
@@ -117,7 +118,7 @@ const generatePDFUsingPDFCreatorNode = asyncHandler(async (req, res) => {
   }
 });
 
-const generatePDF = asyncHandler(async (req, res) => {
+const generatePDFUsingPuppeteer = asyncHandler(async (req, res) => {
   try {
     const browser = await puppeteer.launch({
       headless: "new",
@@ -183,6 +184,80 @@ const generatePDF = asyncHandler(async (req, res) => {
     res.status(500);
     console.log(err);
     throw new Error("Internal server error");
+  }
+});
+
+const generatePDF = asyncHandler(async (req, res) => {
+  try {
+    const browser = await puppeteer.launch({
+      headless: "new",
+    });
+
+    // create a new page
+    const page = await browser.newPage();
+
+    const __dirname = path.resolve();
+
+    const css = fs.readFileSync(
+      path.join(__dirname, "./public/styles/style.css"),
+      "utf8"
+    );
+
+    const source = await fs.readFileSync(
+      path.join(__dirname, "./templates/report.html"),
+      "utf-8"
+    );
+
+    const template = handlebars.compile(source);
+
+    const imagesPath = `http://localhost:3002/images`;
+    const cssPath = `http://localhost:3002/styles/style.css`;
+
+    const data = {
+      imagesPath: imagesPath,
+      cssPath: cssPath,
+    };
+
+    let html = template(data);
+
+    html = html.replace("</head>", `<style>${css}</style></head>`);
+
+    // set your html as the pages content
+    await page.setContent(html, {
+      waitUntil: "domcontentloaded",
+      waitUntil: "networkidle0",
+    });
+
+    // Wait for all images to load
+    // await page.waitForSelector('img[src^="http://localhost:3002/images"]', {
+    //   visible: true,
+    // });
+
+    // set viewport for the page
+    await page.setViewport({ width: 1280, height: 800 });
+
+    // create a pdf buffer
+    const pdfBuffer = await page.pdf({
+      format: "A4",
+    });
+
+    // // or a .pdf file
+    // await page.pdf({
+    //   format: "A4",
+    //   path: `${__dirname}/my-fance-invoice.pdf`,
+    // });
+
+    // close the browser
+    await browser.close();
+
+    res.set({
+      "Content-Type": "application/pdf",
+      "Content-Disposition": 'attachment; filename="my-fance-invoice.pdf"',
+    });
+
+    res.send(pdfBuffer);
+  } catch (error) {
+    console.log(error);
   }
 });
 

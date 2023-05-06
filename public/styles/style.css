@@ -10,20 +10,24 @@ body {
 
 }
 
-.coverimage {
+/* Cover Page */
+
+.coverpage {
     position: relative;
     min-height: 210mm;
     height: 289mm;
     width: 100%;
     page-break-after: avoid;
+    border: 1px solid #000;
 }
-.coverimage img{
+
+.coverpage img {
     width: 100%;
     height: 289mm;
     margin: 0;
 }
 
-.coverText {
+.coverpage > .meta {
     width: 35%;
     position: absolute;
     color: #000;
@@ -31,17 +35,17 @@ body {
     right: 0;
 }
 
-.coverText h4 {
+.coverpage > .meta > h4 {
     font-size: 12pt;
     font-weight: 400;
 }
 
-.coverText h4 strong {
+.coverpage > .meta > h4 > strong {
     display: block;
     font-weight: bold;
 }
 
-.coverText p {
+.coverpage > .meta > p {
     margin: 0;
     font-size: 10pt;
 }
