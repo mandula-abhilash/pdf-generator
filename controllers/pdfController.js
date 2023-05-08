@@ -4,7 +4,6 @@ import path from "path";
 import pdf from "pdf-creator-node";
 import puppeteer from "puppeteer";
 import handlebars from "handlebars";
-import moment from "moment";
 import TimeAgo from "javascript-time-ago";
 
 import en from "javascript-time-ago/locale/en";
@@ -197,13 +196,13 @@ const generatePDFUsingPuppeteer = asyncHandler(async (req, res) => {
 
 const generatePDF = asyncHandler(async (req, res) => {
   try {
+    console.log("Started printing");
     console.time("Execution Time");
 
     const browser = await puppeteer.launch({
       headless: "new",
     });
 
-    // create a new page
     const page = await browser.newPage();
 
     page.setDefaultNavigationTimeout(600000); // 10 minutes
@@ -243,22 +242,38 @@ const generatePDF = asyncHandler(async (req, res) => {
       },
     };
 
-    handlebars.registerHelper("formatDate", (date) => {
-      return moment(date).format("MMM DD YYYY");
+    handlebars.registerHelper("array", function (...args) {
+      // Remove the options object from the arguments list
+      args.pop();
+      return args;
     });
 
-    handlebars.registerHelper("formatDate", (date) => {
-      const reportDate = moment(date);
-      const currentDate = moment();
-      const weeksAgo = currentDate.diff(reportDate, "weeks");
-      return `Report generated ${weeksAgo} weeks ago`;
-    });
+    handlebars.registerHelper(
+      "calculateBackgroundColor",
+      (index, riskLevel) => {
+        console.log(index, riskLevel);
+        let background = "bg-gray-400";
+
+        if (riskLevel === "Low Risk" && index === 0) {
+          background = "bg-green-500";
+        } else if (riskLevel === "Moderate Low" && index <= 1) {
+          background = "bg-yellow-400";
+        } else if (riskLevel === "Moderate" && index <= 2) {
+          background = "bg-yellow-600";
+        } else if (riskLevel === "Moderate High" && index <= 3) {
+          background = "bg-red-500";
+        } else if (riskLevel === "High Risk" && index <= 4) {
+          background = "bg-red-700";
+        }
+
+        return background;
+      }
+    );
 
     let html = template(data);
 
     html = html.replace("</head>", `<style>${css}</style></head>`);
 
-    // set your html as the pages content
     await page.setContent(html, {
       waitUntil: "domcontentloaded",
       waitUntil: "networkidle0",
@@ -272,18 +287,10 @@ const generatePDF = asyncHandler(async (req, res) => {
     // set viewport for the page
     await page.setViewport({ width: 1280, height: 800 });
 
-    // create a pdf buffer
     const pdfBuffer = await page.pdf({
       format: "A4",
     });
 
-    // // or a .pdf file
-    // await page.pdf({
-    //   format: "A4",
-    //   path: `${__dirname}/my-fance-invoice.pdf`,
-    // });
-
-    // close the browser
     await browser.close();
 
     res.set({
@@ -295,6 +302,7 @@ const generatePDF = asyncHandler(async (req, res) => {
   } catch (error) {
     console.log(error);
   } finally {
+    console.log("Printing Ended");
     console.timeEnd("Execution Time");
   }
 });

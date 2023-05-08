@@ -115,28 +115,28 @@ export const report = {
         $oid: "645347ca4bfedf1c37b9f52f",
       },
     },
-    {
-      image:
-        "https://planning-applications-bucket.s3.eu-west-2.amazonaws.com/645347ca4bfedf1c37b9f52b/ancient_woodland.png",
-      name: "Ancient Woodland",
-      group: "Land Designations",
-      riskLevel: {
-        current: 0,
-        automated: "Low Risk",
-        customized: "",
-      },
-      message: {
-        automated:
-          'The nearest Ancient Woodland to your selected location is <span class="text-havelock-blue-500">Mansty Wood</span>, located more than <span class="text-havelock-blue-500">2.7 km</span> away',
-      },
-      importance: {
-        number: 3,
-        value: "Medium",
-      },
-      _id: {
-        $oid: "645347ca4bfedf1c37b9f530",
-      },
-    },
+    // {
+    //   image:
+    //     "https://planning-applications-bucket.s3.eu-west-2.amazonaws.com/645347ca4bfedf1c37b9f52b/ancient_woodland.png",
+    //   name: "Ancient Woodland",
+    //   group: "Land Designations",
+    //   riskLevel: {
+    //     current: 0,
+    //     automated: "Low Risk",
+    //     customized: "",
+    //   },
+    //   message: {
+    //     automated:
+    //       'The nearest Ancient Woodland to your selected location is <span class="text-havelock-blue-500">Mansty Wood</span>, located more than <span class="text-havelock-blue-500">2.7 km</span> away',
+    //   },
+    //   importance: {
+    //     number: 3,
+    //     value: "Medium",
+    //   },
+    //   _id: {
+    //     $oid: "645347ca4bfedf1c37b9f530",
+    //   },
+    // },
     // {
     //   image:
     //     "https://planning-applications-bucket.s3.eu-west-2.amazonaws.com/645347ca4bfedf1c37b9f52b/parish.png",

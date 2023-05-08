@@ -4,6 +4,7 @@
       <title>{{report.title}}</title>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
    </head>
    <body>
       <div class="front-page">
@@ -25,14 +26,14 @@
                <h1>Site Assessment Report</h1>
                <ul>
                   <li>
-                     <img src="{{imagesPath}}/rep1.jpg" />{{report.title}}
+                     <i class='bx bxs-building-house'></i>{{report.title}}
                   </li>
-                  <li><img src="{{imagesPath}}/rep2.jpg" />{{report.constraintName}}</li>
+                  <li><i class='bx bxs-map'></i>{{report.constraintName}}</li>
                   <li>
-                     <img src="{{imagesPath}}/rep3.jpg" />{{report.address}}
+                     <i class='bx bxs-map-pin'></i>{{report.address}}
                   </li>
                   <li>
-                     <img src="{{imagesPath}}/rep4.jpg" />Report generated {{created.ago}}
+                     <i class='bx bx-time-five'></i>Report generated {{created.ago}}
                   </li>
                </ul>
             </div>
@@ -50,27 +51,32 @@
          {{#each report.datasets}}
          <div class="dataset-card">
             <div class="dataset-image">
-               <a href={{image}}><img src="{{image}}" alt="" /></a>
+               <a href={{image}} target="_blank"><img src={{image}} alt="" /></a>
             </div>
             <div class="dataset-report">
                <h1>{{name}}</h1>
                <h4>{{group}}</h4>
                <div class="dataset-report-item">
                   <img src="{{imagesPath}}/icon1.jpg" alt="" />
+                  <i class='bx bx-bot'></i>
                   <h3>Automated Report</h3>
                   {{#if message.automated}}
                   <p>{{{message.automated}}}</p>
+                  {{else}}
+                  <p>Not available</p>
                   {{/if}}
                </div>
                <div class="dataset-report-item">
-                  <img src="{{imagesPath}}/icon2.jpg" alt="" />
+                  <i class='bx bxs-note'></i>
                   <h3>Custom Notes</h3>
                   {{#if message.customized}}
                   <p>{{{message.customized}}}</p>
+                  {{else}}
+                  <p>Not available</p>
                   {{/if}}
                </div>
                <div class="dataset-report-item">
-                  <img src="{{imagesPath}}/icon3.jpg" alt="" />
+                  <i class='bx bx-bolt-circle'></i>
                   <h3>Risk Level</h3>
                   {{#if riskLevel.customized}}
                   <p>{{riskLevel.customized}}</p>
@@ -96,9 +102,15 @@
                         <img src="{{imagesPath}}/indecbg.jpg" alt="" />
                      </div>
                   </div>
+                  <div class="risk-level">
+                    {{#each (array 1 2 3 4 5)}}
+                      <div class="mt-2 h-2 w-1/5 rounded-md {{calculateBackgroundColor @index 3}}"></div>
+                    {{/each}}
+                  </div>
+
                </div>
                <div class="dataset-report-item">
-                  <img src="{{imagesPath}}/icon7.jpg" alt="" />
+                   <i class='bx bx-info-circle'></i>
                   <h3>Importance</h3>
                   <p>{{importance.value}}</p>
                   <div class="risk-level">
@@ -120,7 +132,7 @@
                   </div>
                </div>
                <div class="dataset-report-item">
-                  <img src="{{imagesPath}}/icon6.jpg" alt="" />
+                  <i class='bx bxs-data'></i>
                   <h3>Provider</h3>
                   <p>office for National statistics</p>
                </div>
