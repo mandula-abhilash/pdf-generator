@@ -28,7 +28,7 @@ body {
 }
 
 .front-page > .meta {
-    width: 35%;
+    width: 48%;
     position: absolute;
     color: #000;
     bottom: 50px;
@@ -37,17 +37,19 @@ body {
 
 .front-page > .meta > h4 {
     font-size: 8pt;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 .front-page > .meta > h4 > strong {
     display: block;
-    font-weight: bold;
+    font-weight: 700;
+    font-size: 11pt;
 }
 
 .front-page > .meta > p {
     margin: 0;
-    font-size: 8pt;
+    font-size: 9pt;
+    font-weight: 400;
 }
 .front-page > .meta > p > span.tab {
     display: inline-block;
@@ -177,10 +179,11 @@ p a {
 
 .datasets-page {
     width: 100%;
-    padding: 15px 5px 0;
+    padding:  0;
     box-sizing: border-box;
     page-break-before: always;
-    page-break-after: avoid;
+    page-break-after: avoid;    
+    margin-top: 15px;
 }
 
 .datasets-page div:first-child{
@@ -188,40 +191,50 @@ p a {
 }
 .datasets-page div.dataset-card:nth-child(3n) {
     page-break-after: always;
-    border-bottom: none;
+    border-bottom: 2px solid #000;
+    border-right: 2px solid #000;
+}
+.datasets-page div.dataset-card:nth-child(3n) .dataset-report{
+    width: 59%;
 }
 
 .dataset-card {
     width: 100%;
-    background: #fff;
     box-sizing: border-box;
-    margin-top: 11px;
-    padding-bottom: 11px;
-    height: 95mm;
+    margin-top: 0px;
+    padding: 4mm 0;
+    height: 96mm;
+    border: 2px solid #000;
+    border-bottom: 0px;
+}
+.datasets-page div.dataset-card:last-child{
     border-bottom: 2px solid #000;
 }
-
+.datasets-page div.dataset-card:nth-child(4n) {
+    margin-top: 4mm;
+}
 
 .dataset-image,
 .dataset-report{
-    height: 92mm;
+    height: 87mm;
     background: #F9FAFB;
     float: left;
 }
 
 .dataset-image {
-    width: 37%;
+    width: 40%;
+    padding-left: 4mm;
+    box-sizing: border-box;
     overflow: hidden;
 }
 .dataset-image img{
-    width: 100%;
     height: 100%;
     border-radius: 5px;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .dataset-report {
-    width: 63%;
+    width: 60%;
     padding: 0 20px;
     box-sizing: border-box;
 }
@@ -260,7 +273,7 @@ p a {
 }
 
 .dataset-report-item h3 {
-    font-size: 10px;
+    font-size: 10.5pt;
     color: #1f2937;
     font-weight: 600;
     margin: 0;
@@ -273,8 +286,8 @@ p a {
 }
 
 .dataset-report-item p {
-    font-size: 8pt;
-    line-height: 10pt;
+    font-size: 10pt;
+    line-height: 11.3pt;
     color: #1f2937;
     font-weight: 400;
     margin:0;
@@ -311,7 +324,7 @@ p a {
 
 .card-footer p{
     text-align: right;
-    font-size: 6px;
+    font-size: 9pt;
     line-height: 20px;
     color: #646464;
     font-weight: 500;
