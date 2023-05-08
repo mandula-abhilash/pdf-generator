@@ -29,6 +29,7 @@ body {
 
 .front-page > .meta {
     width: 48%;
+    width: 48%;
     position: absolute;
     color: #000;
     bottom: 50px;
@@ -38,16 +39,21 @@ body {
 .front-page > .meta > h4 {
     font-size: 8pt;
     font-weight: 400;
+    font-weight: 400;
 }
 
 .front-page > .meta > h4 > strong {
     display: block;
     font-weight: 700;
     font-size: 11pt;
+    font-weight: 700;
+    font-size: 11pt;
 }
 
 .front-page > .meta > p {
     margin: 0;
+    font-size: 9pt;
+    font-weight: 400;
     font-size: 9pt;
     font-weight: 400;
 }
@@ -182,10 +188,11 @@ p a {
 
 .datasets-page {
     width: 100%;
-    padding: 15px 5px 0;
+    padding:  0;
     box-sizing: border-box;
     page-break-before: always;
-    page-break-after: avoid;
+    page-break-after: avoid;    
+    margin-top: 15px;
 }
 
 .datasets-page div:first-child{
@@ -206,41 +213,42 @@ p a {
 .dataset-card {
     width: 100%;
     box-sizing: border-box;
-    margin-top: 0px;
-    padding: 4mm 0;
-    height: 96mm;
-    border: 2px solid #000;
-    border-bottom: 0px;
-}
-
-.datasets-page div.dataset-card:last-child{
+    margin-top: 11px;
+    padding-bottom: 11px;
+    height: 95mm;
     border-bottom: 2px solid #000;
 }
 
 .datasets-page div.dataset-card:nth-child(4n) {
     margin-top: 4mm;
 }
-
+.datasets-page div.dataset-card:nth-child(4n) {
+    margin-top: 4mm;
+}
 
 .dataset-image,
 .dataset-report{
+    height: 87mm;
     height: 87mm;
     background: #F9FAFB;
     float: left;
 }
 
 .dataset-image {
-    width: 37%;
+    width: 40%;
+    padding-left: 4mm;
+    box-sizing: border-box;
     overflow: hidden;
 }
 .dataset-image img{
-    width: 100%;
     height: 100%;
     border-radius: 5px;
+    object-fit: cover;
     object-fit: cover;
 }
 
 .dataset-report {
+    width: 60%;
     width: 60%;
     padding: 0 20px;
     box-sizing: border-box;
@@ -278,8 +286,8 @@ p a {
     width: 18px;
 }
 
-.dataset-report-item h3,i {
-    font-size: 10.5pt;
+.dataset-report-item h3 {
+    font-size: 10px;
     color: #1f2937;
     font-weight: 600;
     margin: 0;
