@@ -7,10 +7,10 @@
       <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
       <style>
          @media print {
-            .page-break {
-               break-after: page;
-               page-break-after: always;
-            }  
+         .page-break {
+         break-after: page;
+         page-break-after: always;
+         }  
          }
          .transparent-card {
          box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);
@@ -18,13 +18,17 @@
          backdrop-filter: blur(30px);
          background-color: rgba(255, 255, 255, 0.8);
          }
+         .top-left-right-shadow {
+          box-shadow: -6px 0 6px -6px rgba(0, 0, 0, 0.1), 6px 0 6px -6px rgba(0, 0, 0, 0.1), 0 -6px 6px -6px rgba(0, 0, 0, 0.1);
+         }
+
       </style>
    </head>
    <body class="font-sans">
       {{!-- 
       <div class="bg-red-200 h-[346mm] w-full"></div>
       --}}
-      <div class="h-a4 w-a4 relative hidden">
+      <div class="h-a4 w-a4 relative">
          <div class="flex h-full w-11/12 mx-auto items-center justify-center">
             <img class="absolute flex rounded-md w-11/12 border border-gray-900 object-cover" src="{{imagesPath}}/coverimage.jpeg" alt="" />
             <div class="absolute bottom-20 right-14 flex w-full max-w-sm flex-col flex-wrap items-end rounded-md text-sm leading-relaxed text-gray-900">
@@ -32,176 +36,193 @@
                   <strong class="text-havelock-blue-500 text-lg font-bold uppercase tracking-wide">Site Assessment Report</strong>
                   <h4 class="font-medium tracking-wide mb-4">{{report.address}}</h4>
                   <p><span class="font-normal text-gray-700"> Produced By </span><span class="ml-4 mr-2">:</span> {{report.author}}</p>
-                  <p><span class="font-normal text-gray-700">Date Produced</span><span class="ml-0.5 mr-2"> :</span> {{created.date}}</p>
+                  <p><span class="font-normal text-gray-700">Date Produced</span><span class="ml-0.5 mr-2"> :</span> {{created}}</p>
                </div>
             </div>
          </div>
       </div>
-      <div class="h-a4 w-a4 relative hidden">
+      <div class="h-a4 w-a4 relative">
          <div class="mx-auto flex h-full w-11/12 items-start justify-center py-10">
             <img class="absolute flex h-4/6 w-11/12 rounded-md object-cover" src={{report.image}} alt="" />
-               <div class="transparent-card absolute bottom-24 z-10 mx-auto mt-40 flex w-2/3 flex-col items-start rounded-md p-10">
-                  <div class="flex flex-col w-full">
-                     <h1 class="text-4xl font-bold tracking-wide">Site Assessment Report</h1>
-                     <ul class="mt-8 space-y-2 text-sm text-gray-900">
-                        <li class="flex justify-start items-center">
-                           <i class="bx bxs-building-house text-conifer-500"></i>
-                           <span class="ml-2 leading-relaxed">{{report.title}}</span>
-                        </li>
-                        <li class="flex justify-start items-center">
-                           <i class="bx bxs-map text-conifer-500"></i>
-                           <span class="ml-2 leading-relaxed">{{report.constraintName}}</span>
-                        </li>
-                        <li class="flex justify-start items-center">
-                           <i class="bx bxs-map-pin text-conifer-500"></i>
-                           <span class="ml-2 leading-relaxed">{{report.address}}</span>
-                        </li>
-                        {{!-- 
-                        <li class="flex justify-start items-center">
-                           <i class="bx bx-time-five text-conifer-500"></i>
-                           <span class="ml-2 leading-relaxed">Report generated {{created.ago}}</span>
-                        </li>
-                        --}}
-                     </ul>
-                  </div>
-                  <div class="mt-12 flex flex-col justify-center w-full">
-                     <h4 class="text-havelock-blue-500 mb-2 text-sm font-semibold uppercase tracking-wide">BASIC SITE DETAILS</h4>
-                     <div class="grid w-full grid-cols-8 text-sm">
-                        <div class="col-span-2 grid-rows-5 space-y-1 font-semibold text-gray-500">
-                           <p>Region</p>
-                           <p>Local Authority</p>
-                           <p>Region</p>
-                           <p>Ward</p>
-                           <p>Parish</p>
-                        </div>
-                        <div class="col-span-6 grow grid-rows-5 space-y-1">
-                           <p>{{report.siteOverview.region}}</p>
-                           <p>{{report.siteOverview.county}}</p>
-                           <p>{{report.siteOverview.local_authority}}</p>
-                           <p>{{report.siteOverview.ward}}</p>
-                           <p>{{report.siteOverview.parish}}</p>
-                        </div>
-                     </div>   
+            <div class="transparent-card absolute bottom-24 z-10 mx-auto mt-40 flex w-2/3 flex-col items-start rounded-md p-10">
+               <div class="flex flex-col w-full">
+                  <h1 class="text-4xl font-bold tracking-wide">Site Assessment Report</h1>
+                  <ul class="mt-8 space-y-2 text-sm text-gray-900">
+                     <li class="flex justify-start items-center">
+                        <i class="bx bxs-building-house text-conifer-500"></i>
+                        <span class="ml-2 leading-relaxed">{{report.title}}</span>
+                     </li>
+                     <li class="flex justify-start items-center">
+                        <i class="bx bxs-map text-conifer-500"></i>
+                        <span class="ml-2 leading-relaxed">{{report.constraintName}}</span>
+                     </li>
+                     <li class="flex justify-start items-center">
+                        <i class="bx bxs-map-pin text-conifer-500"></i>
+                        <span class="ml-2 leading-relaxed">{{report.address}}</span>
+                     </li>
+                     {{!-- 
+                     <li class="flex justify-start items-center">
+                        <i class="bx bx-time-five text-conifer-500"></i>
+                        <span class="ml-2 leading-relaxed">Report generated {{created.ago}}</span>
+                     </li>
+                     --}}
+                  </ul>
+               </div>
+               <div class="mt-12 flex flex-col justify-center w-full">
+                  <h4 class="text-havelock-blue-500 mb-2 text-sm font-semibold uppercase tracking-wide">BASIC SITE DETAILS</h4>
+                  <div class="grid w-full grid-cols-8 text-sm">
+                     <div class="col-span-2 grid-rows-5 space-y-1 font-semibold text-gray-500">
+                        <p>Region</p>
+                        <p>Local Authority</p>
+                        <p>Region</p>
+                        <p>Ward</p>
+                        <p>Parish</p>
+                     </div>
+                     <div class="col-span-6 grow grid-rows-5 space-y-1">
+                        <p>{{report.siteOverview.region}}</p>
+                        <p>{{report.siteOverview.county}}</p>
+                        <p>{{report.siteOverview.local_authority}}</p>
+                        <p>{{report.siteOverview.ward}}</p>
+                        <p>{{report.siteOverview.parish}}</p>
+                     </div>
                   </div>
                </div>
+            </div>
          </div>
       </div>
-      
-         {{#if hasDatasets}}
-            {{#each groupedDatasets}}
-               <div class="page-break">
-                  {{#each this}}
-                  <div class="dataset my-2 mx-2">
-                     <div class="flex h-[96mm] w-full text-red-500 bg-red-100 p-2 rounded-md">{{this.name}}</div>
+      {{#if hasDatasets}}
+      {{#each groupedDatasets}}
+      <div class="page-break bg-gray-100">
+         {{#each this}}
+         {{#if @last}}
+         <div class="py-4 px-4">
+            {{else}}
+            <div class="pt-4 px-4">
+               {{/if}}
+               <div class="flex h-[93.1mm] w-full rounded-md">
+                  <div class="flex flex-col w-full p-4 bg-white rounded-md">
+                     <div class="flex">
+                        <div class="flex w-1/3">
+                           <div class="flex flex-col">
+                              {{!-- <div class="rounded-b-md bg-white top-left-right-shadow"> --}}
+                              <div class="rounded-md bg-white shadow-inner">
+                                 {{!-- <img class="flex aspect-square h-[65mm] w-[65mm] rounded-t-md object-cover object-center" src={{this.image}} />
+                                 <div class="p-3">
+                                    <p class="text-havelock-blue-500 uppercase text-xs font-semibold">{{this.name}}</p>
+                                    <p class="mt-1 text-xs font-normal text-gray-600">{{this.group}}</p>
+                                 </div> --}}
+                                 <div class="p-3">
+                                    <p class="text-havelock-blue-500 uppercase text-xs font-semibold">{{this.name}}</p>
+                                    <p class="mt-1 text-xs font-normal text-gray-600">{{this.group}}</p>
+                                 </div>
+                                 <img class="flex aspect-square h-[65mm] w-[65mm] rounded-b-md object-cover object-center" src={{this.image}} />
+                              </div>
+                           </div>
+                        </div>
+                        <div class="flex w-2/3 flex-col rounded-md pl-4 text-gray-900">
+                           <div class="flex flex-col">
+                              <div class="flex items-center justify-start">
+                                 <i class="bx bxs-bot bx-xs mr-1 text-magenta-500"></i>
+                                 <p class="text-xs font-semibold leading-relaxed">Automated Report</p>
+                              </div>
+                              {{#if this.message.automated}}
+                              <p class="ml-5 text-xs leading-relaxed">{{{this.message.automated}}}</p>
+                              {{else}}
+                              <p class="ml-5 text-xs leading-relaxed text-gray-500">Not available</p>
+                              {{/if}}
+                           </div>
+                           <div class="flex flex-col mt-5">
+                              <div class="flex items-center justify-start">
+                                 <i class="bx bxs-note bx-xs mr-1 text-boy-red-500"></i>
+                                 <p class="text-xs font-semibold leading-relaxed">Custom Notes</p>
+                              </div>
+                              {{#if this.message.customized}}
+                              <p class="ml-5 text-xs leading-relaxed">{{{this.message.customized}}}</p>
+                              {{else}}
+                              <p class="ml-5 text-xs leading-relaxed text-gray-500">Not available</p>
+                              {{/if}}
+                           </div>
+                           <div class="flex flex-col mt-5">
+                              <div class="flex items-center justify-start">
+                                 <i class="bx bx-bolt-circle bx-xs mr-1 text-purple-500"></i>
+                                 <p class="text-xs font-semibold leading-relaxed mr-2">Risk Level</p>
+                                 {{#if this.riskLevel.customized}}
+                                    <p class="ml-3 text-xs leading-relaxed">{{{this.riskLevel.customized}}}</p>
+                                    {{else}}
+                                       {{#if this.riskLevel.automated}}
+                                          <p class="ml-3 text-xs leading-relaxed">{{{this.riskLevel.automated}}}</p>
+                                       {{else}}
+                                       <p class="ml-3 text-xs leading-relaxed text-gray-500">Not available</p>
+                                       {{/if}}
+                                 {{/if}}
+                              </div>
+                              <div class="flex space-x-1 mt-2 ml-5">
+                                 {{#each (array 1 2 3 4 5) as |barIndex|}}
+                                 {{log (getBarColor barIndex ../this.riskLevel.current)}}
+                                    {{#if @first}}
+                                       <div class="h-1 w-16 rounded-l-md {{getBarColor barIndex ../this.riskLevel.current}}"></div>
+                                    {{else if @last}}
+                                       <div class="h-1 w-16 rounded-r-md {{getBarColor barIndex ../this.riskLevel.current}}"></div>
+                                    {{else}}
+                                       <div class="h-1 w-16 {{getBarColor barIndex ../this.riskLevel.current}}"></div>
+                                    {{/if}}
+                                 {{/each}}
+                              </div>
+                              {{!-- <div class="flex space-x-1 mt-2 ml-5">
+                                 <div class="h-1 w-16 rounded-l-md bg-green-500"></div>
+                                 <div class="h-1 w-16 bg-gray-200"></div>
+                                 <div class="h-1 w-16 bg-gray-200"></div>
+                                 <div class="h-1 w-16 bg-gray-200"></div>
+                                 <div class="h-1 w-16 rounded-r-md bg-gray-200"></div>
+                                 </div>--}}
+                              </div> 
+                           <div class="flex flex-col mt-5">
+                              <div class="flex items-center justify-start">
+                                 <i class="bx bx-info-circle bx-xs mr-1 text-green-500"></i>
+                                 <p class="text-xs font-semibold leading-relaxed">Importance</p>
+                                 {{#if this.importance.value}}
+                                 <p class="ml-3 text-xs leading-relaxed">{{this.importance.value}}</p>
+                                 {{else}}
+                                 <p class="ml-3 text-xs leading-relaxed text-gray-500">Not available</p>
+                                 {{/if}}
+                              </div>
+                              <div class="flex space-x-1 mt-2 ml-5">
+                                 {{#each (array 1 2 3 4 5) as |barIndex|}}
+                                 {{log (getBarColor barIndex ../this.importance.number)}}
+                                    {{#if @first}}
+                                       <div class="h-1 w-16 rounded-l-md {{getBarColor barIndex ../this.importance.number}}"></div>
+                                    {{else if @last}}
+                                       <div class="h-1 w-16 rounded-r-md {{getBarColor barIndex ../this.importance.number}}"></div>
+                                    {{else}}
+                                       <div class="h-1 w-16 {{getBarColor barIndex ../this.importance.number}}"></div>
+                                    {{/if}}
+                                 {{/each}}
+                              </div>
+                           </div>
+                           <div class="flex flex-col mt-5">
+                              <div class="flex items-center justify-start">
+                                 <i class="bx bxs-data bx-xs mr-1 text-yellow-500"></i>
+                                 <p class="text-xs font-semibold leading-relaxed">Provider</p>
+                              </div>
+                              {{#if this.provider.name}}
+                              <p class="ml-5 text-xs leading-relaxed">{{this.provider.name}}</p>
+                              {{else}}
+                              <p class="ml-5 text-xs leading-relaxed text-gray-500">Not available</p>
+                              {{/if}}
+                           </div>
+                        </div>
+                     </div>
+                     <div class="flex w-full justify-end">
+                        {{#if this.provider.attribution}}
+                           <p class="ml-5 text-xs text-[8px] leading-relaxed">{{this.provider.attribution}}</p>
+                        {{/if}}
+                     </div>
                   </div>
-                  {{/each}}
                </div>
+            </div>
             {{/each}}
-{{/if}}
-      {{!-- </div> --}}
-      
-      {{!-- <div class="h-a4 w-a4 mx-auto mt-3 relative rounded-md border border-gray-900 bg-green-100">
-         <div class="m-6 flex w-full flex-col">
-            <div class="flex h-[97mm] w-full">1</div>
-            <div class="flex h-[97mm] w-full">2</div>
-            <div class="flex h-[97mm] w-full">3</div>
-         </div>
-      </div> --}}
-      {{!--
-      <div class="datasets-page">
-         {{#each report.datasets}}
-         <div class="dataset-card">
-            <div class="dataset-image">
-               <a href={{image}} target="_blank"><img src={{image}} alt="" /></a>
-            </div>
-            <div class="dataset-report">
-               <h1>{{name}}</h1>
-               <h4>{{group}}</h4>
-               <div class="dataset-report-item">
-                  <i class='bx bx-bot'></i>
-                  <h3>Automated Report</h3>
-                  {{#if message.automated}}
-                  <p>{{{message.automated}}}</p>
-                  {{else}}
-                  <p>Not available</p>
-                  {{/if}}
-               </div>
-               <div class="dataset-report-item">
-                  <i class='bx bxs-note'></i>
-                  <h3>Custom Notes</h3>
-                  {{#if message.customized}}
-                  <p>{{{message.customized}}}</p>
-                  {{else}}
-                  <p>Not available</p>
-                  {{/if}}
-               </div>
-               <div class="dataset-report-item">
-                  <i class='bx bx-bolt-circle'></i>
-                  <h3>Risk Level</h3>
-                  {{#if riskLevel.customized}}
-                  <p>{{riskLevel.customized}}</p>
-                  {{else}}
-                  {{#if riskLevel.automated}}
-                  <p>{{riskLevel.automated}}</p>
-                  {{/if}}
-                  {{/if}}
-                  <div class="risk-level">
-                     <div>
-                        <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-                     </div>
-                     <div>
-                        <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-                     </div>
-                     <div>
-                        <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-                     </div>
-                     <div>
-                        <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-                     </div>
-                     <div>
-                        <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-                     </div>
-                  </div>
-                  <div class="risk-level">
-                     {{#each (array 1 2 3 4 5)}}
-                     <div class="mt-2 h-2 w-1/5 rounded-md {{calculateBackgroundColor @index 3}}"></div>
-                     {{/each}}
-                  </div>
-               </div>
-               <div class="dataset-report-item">
-                  <i class='bx bx-info-circle'></i>
-                  <h3>Importance</h3>
-                  <p>{{importance.value}}</p>
-                  <div class="risk-level">
-                     <div>
-                        <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-                     </div>
-                     <div>
-                        <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-                     </div>
-                     <div>
-                        <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-                     </div>
-                     <div>
-                        <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-                     </div>
-                     <div>
-                        <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-                     </div>
-                  </div>
-               </div>
-               <div class="dataset-report-item">
-                  <i class='bx bxs-data'></i>
-                  <h3>Provider</h3>
-                  <p>office for National statistics</p>
-               </div>
-               <div class="card-footer">
-                  <p>This is footer text</p>
-               </div>
-            </div>
          </div>
          {{/each}}
-      </div>
-      </div> --}}
+         {{/if}}
    </body>
 </html>

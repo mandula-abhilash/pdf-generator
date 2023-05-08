@@ -76,6 +76,14 @@ const generatePDF = asyncHandler(async (req, res) => {
       return args;
     });
 
+    handlebars.registerHelper("subtract", function (a, b) {
+      return a - b;
+    });
+
+    handlebars.registerHelper("length", function (arr) {
+      return arr.length;
+    });
+
     handlebars.registerHelper(
       "calculateBackgroundColor",
       (index, riskLevel) => {
@@ -96,6 +104,37 @@ const generatePDF = asyncHandler(async (req, res) => {
         return background;
       }
     );
+
+    handlebars.registerHelper("getBarColor", function (index, riskLevel) {
+      console.log("index:", index);
+      console.log("riskLevel:", riskLevel);
+      let color;
+      if (index <= riskLevel) {
+        switch (riskLevel) {
+          case 0:
+            color = "bg-green-500";
+            break;
+          case 1:
+            color = "bg-yellow-400";
+            break;
+          case 2:
+            color = "bg-yellow-600";
+            break;
+          case 3:
+            color = "bg-red-500";
+            break;
+          case 4:
+            color = "bg-red-700";
+            break;
+          default:
+            color = "bg-gray-400";
+        }
+      } else {
+        color = "bg-gray-400";
+      }
+      console.log(color);
+      return color;
+    });
 
     handlebars.registerHelper("add", function (a, b) {
       return a + b;
