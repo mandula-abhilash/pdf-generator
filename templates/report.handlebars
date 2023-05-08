@@ -23,7 +23,6 @@
          <div class="card">
             <div>
                <h1>Site Assessment Report</h1>
-               <p>{{imagesPath}}/rep1.jpg</p>
                <ul>
                   <li>
                      <img src="{{imagesPath}}/rep1.jpg" />{{report.title}}
@@ -47,26 +46,6 @@
             </div>
          </div>
       </div>
-      {{!-- 
-      <div class="card">
-         <ul>
-            <p>Datasets</p>
-            {{#each report.datasets}}
-            <li>
-               <h2>{{name}}</h2>
-               <img src="{{image}}" alt="{{name}}" width="100" />
-               <p>Group: {{group}}</p>
-               <p>Risk Level - Current: {{riskLevel.current}}, Automated: {{riskLevel.automated}}</p>
-               {{#if riskLevel.customized}}
-               <p>Risk Level - Customized: {{riskLevel.customized}}</p>
-               {{/if}}
-               <p>Message: {{{message.automated}}}</p>
-               <p>Importance: {{importance.number}} - {{importance.value}}</p>
-            </li>
-            {{/each}}
-         </ul>
-      </div>
-      --}}
       <div class="datasets-page">
          {{#each report.datasets}}
          <div class="dataset-card">
