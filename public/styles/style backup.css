@@ -32,7 +32,6 @@ body {
     position: absolute;
     color: #000;
     bottom: 50px;
-    right: 0;
 }
 
 .front-page > .meta > h4 {
@@ -51,6 +50,7 @@ body {
     font-size: 9pt;
     font-weight: 400;
 }
+
 .front-page > .meta > p > span.tab {
     display: inline-block;
     margin-left: 13px;
@@ -141,8 +141,12 @@ body {
     font-weight: 600;
 }
 
-.cover-page .card ul li img {
+.cover-page .card ul li i {
     margin-right: 7px;
+    color: #ddecb2;
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 400;
 }
 
 .cover-page .card h4 {
@@ -169,6 +173,7 @@ body {
 
 
 
+
 /* Datasets Card */
 
 p a {
@@ -188,14 +193,17 @@ p a {
 .datasets-page div:first-child{
     margin-top: 0px;
 }
+
 .datasets-page div.dataset-card:nth-child(3n) {
     page-break-after: always;
     border-bottom: 1px solid #000;
     border-right: 1px solid #000;
 }
+
 .datasets-page div.dataset-card:nth-child(3n) .dataset-report{
-    /* width: 59%; */
+    width: 59%;
 }
+
 
 .dataset-card {
     width: 100%;
@@ -206,9 +214,11 @@ p a {
     border: 1px solid #000;
     border-bottom: 0px;
 }
+
 .datasets-page div.dataset-card:last-child{
-    border-bottom: 1px solid #000;
+    border-bottom: 2px solid #000;
 }
+
 .datasets-page div.dataset-card:nth-child(4n) {
     margin-top: 4mm;
 }
@@ -221,19 +231,19 @@ p a {
 }
 
 .dataset-image {
-    width: 35%;
+    width: 40%;
     padding-left: 4mm;
     box-sizing: border-box;
     overflow: hidden;
 }
 .dataset-image img{
     height: 100%;
-    /* border-radius: 5px; */
+    border-radius: 5px;
     object-fit: cover;
 }
 
 .dataset-report {
-    width: 65%;
+    width: 60%;
     padding: 0 20px;
     box-sizing: border-box;
 }
@@ -253,13 +263,13 @@ p a {
     margin: 1px 0 5px;
 }
 .dataset-report-item {
-    /* padding: 0 0 0 25px; */
-    margin: 0 0 10px;
+    margin: 0 0 2px;
     position: relative;
     width: 100%;
     float: left;
     box-sizing: border-box;
 }
+
 .dataset-report-item:last-child{
     margin: 0 ;
 }
@@ -271,26 +281,34 @@ p a {
     width: 18px;
 }
 
+.dataset-report-item i {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 400;
+}
+
 .dataset-report-item h3 {
     font-size: 8pt;
     color: #1f2937;
     font-weight: 600;
     margin: 0;
     display: inline-block;
+    background-color: green;
 }
 
-.dataset-report-item i {
-    display: inline-block;
+
+.noteimg {
+    width: 13px;
+    position: relative !important;
 }
 
 .dataset-report-item p {
     font-size: 8pt;
-    line-height: 8pt;
+    /* line-height: 10pt; */
     color: #1f2937;
-    font-weight: 400;
-    margin:0;
+    /* font-weight: 400; */
+    /* margin-left: 7px; */
 }
-
 
 
 .risk-level {
@@ -306,6 +324,7 @@ p a {
     width: 18%;
     border-radius: 5px;
     float: left;
+    display: inline-block;
 }
 .risk-level div img{
     width: 100%;
@@ -322,12 +341,14 @@ p a {
 
 .card-footer p{
     text-align: right;
-    font-size: 9pt;
+    font-size: 6pt;
     line-height: 20px;
     color: #646464;
     font-weight: 500;
-    margin: 0;
 }
+
+
+
 
 
 
@@ -336,3 +357,39 @@ p a {
     color: #3D9BE9;
     font-weight: 500;
 }
+
+bg-gray-400 {
+    height: 2px;
+    widht: 5px;
+    background-color: #9CA3AF;
+  }
+  
+  .bg-green-500 {
+    height: 2px;
+    widht: 5px;
+    background-color: #10B981;
+  }
+  
+  .bg-yellow-400 {
+    height: 2px;
+    widht: 5px;
+    background-color: #FBBF24;
+  }
+  
+  .bg-yellow-600 {
+    height: 2px;
+    widht: 5px;
+    background-color: #D97706;
+  }
+  
+  .bg-red-500 {
+    height: 2px;
+    widht: 5px;
+    background-color: #EF4444;
+  }
+  
+  .bg-red-700 {
+    height: 2px;
+    widht: 5px;
+    background-color: #B91C1C;
+  }

@@ -5,39 +5,55 @@
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+      <style>
+         @media print {
+            .page-break {
+               break-after: page;
+               page-break-after: always;
+            }
+         }
+
+         .transparent-card {
+            box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);
+            border-radius: 5px;
+            backdrop-filter: blur(14px);
+            background-color: rgba(255, 255, 255, 0.2);
+         }
+      </style>
    </head>
-   <body>
-      <div class="front-page">
-         <img src="{{imagesPath}}/coverimage.jpeg" alt="" />
-         <div class="meta">
-            <h4>
-               <strong>Site Assessment Report</strong>{{report.address}}
-            </h4>
-            <p>Produced By <span class="tab">: {{report.author}}</span></p>
-            <p>Date Produced : {{created.date}}</p>
+   <body class="font-sans">
+      {{!-- <div class="bg-red-200 h-[346mm] w-full"></div> --}}
+      <div class="h-a4 w-a4 relative">
+         <div class="flex h-full w-11/12 mx-auto items-center justify-center">
+            <img class="absolute flex rounded-md w-11/12 border border-gray-900 object-cover" src="{{imagesPath}}/coverimage.jpeg" alt="" />
+            <div class="absolute bottom-20 right-14 flex w-full max-w-sm flex-col flex-wrap items-end rounded-md text-sm leading-relaxed text-gray-900">
+               <div class="max-w-sm flex-wrap text-sm leading-relaxed text-gray-900">
+                  <strong class="text-havelock-blue-500 text-lg font-bold uppercase tracking-wide">Site Assessment Report</strong>
+                  <h4 class="font-medium tracking-wide mb-4">{{report.address}}</h4>
+
+                  <p><span class="font-normal text-gray-700"> Produced By </span><span class="ml-4 mr-2">:</span> {{report.author}}</p>
+                  <p><span class="font-normal text-gray-700">Date Produced</span><span class="ml-0.5 mr-2"> :</span> {{created.date}}</p>
+               </div>
+            </div>
          </div>
       </div>
-      <div class="cover-page">
-         <div class="image">
-            <img src="{{imagesPath}}/cover-image.png" alt="" />
-         </div>
-         <div class="card" style="background-color: whitesmoke;">
-            <div>
+      {{!-- <div class="page-break"></div> --}}
+      <div class="h-a4 w-a4 relative mx-auto flex items-center justify-center py-20">
+         <img class="rounded-md w-full h-full" src={{report.image}} alt="" />
+         {{!-- <div class="flex mx-auto w-full h-full items-center justify-center py-24">
+            <img class="mx-auto flex w-full h-full" src="{{imagesPath}}/cover-image.png" alt="" />
+         </div> --}}
+         <div class="transparent-card absolute bottom-0 z-10 mx-auto mt-40 flex w-2/3 flex-col items-start rounded-md p-10">
+            <div class="flex flex-col">
                <h1>Site Assessment Report</h1>
                <ul>
-                  <li>
-                     <i class='bx bxs-building-house'></i>{{report.title}}
-                  </li>
-                  <li><i class='bx bxs-map'></i>{{report.constraintName}}</li>
-                  <li>
-                     <i class='bx bxs-map-pin'></i>{{report.address}}
-                  </li>
-                  <li>
-                     <i class='bx bx-time-five'></i>Report generated {{created.ago}}
-                  </li>
+               <li><i class="bx bxs-building-house"></i>{{report.title}}</li>
+               <li><i class="bx bxs-map"></i>{{report.constraintName}}</li>
+               <li><i class="bx bxs-map-pin"></i>{{report.address}}</li>
+               <li><i class="bx bx-time-five"></i>Report generated {{created.ago}}</li>
                </ul>
             </div>
-            <div>
+            <div class="mt-10 flex flex-col justify-center">
                <h4>BASIC SITE DETAILS</h4>
                <p><strong>Region: </strong>{{report.siteOverview.region}}</p>
                <p><strong>Local Authority: </strong>{{report.siteOverview.county}}</p>
@@ -47,7 +63,7 @@
             </div>
          </div>
       </div>
-      <div class="datasets-page">
+      {{!--<div class="datasets-page">
          {{#each report.datasets}}
          <div class="dataset-card">
             <div class="dataset-image">
@@ -142,6 +158,6 @@
          </div>
          {{/each}}
       </div>
-      </div>
+      </div> --}}
    </body>
 </html>
