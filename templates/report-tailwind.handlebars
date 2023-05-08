@@ -7,22 +7,23 @@
       <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
       <style>
          @media print {
-            .page-break {
-               break-after: page;
-               page-break-after: always;
-            }
+         .page-break {
+         break-after: page;
+         page-break-after: always;
          }
-
+         }
          .transparent-card {
-            box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);
-            border-radius: 5px;
-            backdrop-filter: blur(14px);
-            background-color: rgba(255, 255, 255, 0.2);
+         box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);
+         border-radius: 5px;
+         backdrop-filter: blur(30px);
+         background-color: rgba(255, 255, 255, 0.8);
          }
       </style>
    </head>
    <body class="font-sans">
-      {{!-- <div class="bg-red-200 h-[346mm] w-full"></div> --}}
+      {{!-- 
+      <div class="bg-red-200 h-[346mm] w-full"></div>
+      --}}
       <div class="h-a4 w-a4 relative">
          <div class="flex h-full w-11/12 mx-auto items-center justify-center">
             <img class="absolute flex rounded-md w-11/12 border border-gray-900 object-cover" src="{{imagesPath}}/coverimage.jpeg" alt="" />
@@ -30,40 +31,70 @@
                <div class="max-w-sm flex-wrap text-sm leading-relaxed text-gray-900">
                   <strong class="text-havelock-blue-500 text-lg font-bold uppercase tracking-wide">Site Assessment Report</strong>
                   <h4 class="font-medium tracking-wide mb-4">{{report.address}}</h4>
-
                   <p><span class="font-normal text-gray-700"> Produced By </span><span class="ml-4 mr-2">:</span> {{report.author}}</p>
                   <p><span class="font-normal text-gray-700">Date Produced</span><span class="ml-0.5 mr-2"> :</span> {{created.date}}</p>
                </div>
             </div>
          </div>
       </div>
-      {{!-- <div class="page-break"></div> --}}
-      <div class="h-a4 w-a4 relative mx-auto flex items-center justify-center py-20">
-         <img class="rounded-md w-full h-full" src={{report.image}} alt="" />
-         {{!-- <div class="flex mx-auto w-full h-full items-center justify-center py-24">
-            <img class="mx-auto flex w-full h-full" src="{{imagesPath}}/cover-image.png" alt="" />
-         </div> --}}
-         <div class="transparent-card absolute bottom-0 z-10 mx-auto mt-40 flex w-2/3 flex-col items-start rounded-md p-10">
-            <div class="flex flex-col">
-               <h1>Site Assessment Report</h1>
-               <ul>
-               <li><i class="bx bxs-building-house"></i>{{report.title}}</li>
-               <li><i class="bx bxs-map"></i>{{report.constraintName}}</li>
-               <li><i class="bx bxs-map-pin"></i>{{report.address}}</li>
-               <li><i class="bx bx-time-five"></i>Report generated {{created.ago}}</li>
-               </ul>
-            </div>
-            <div class="mt-10 flex flex-col justify-center">
-               <h4>BASIC SITE DETAILS</h4>
-               <p><strong>Region: </strong>{{report.siteOverview.region}}</p>
-               <p><strong>Local Authority: </strong>{{report.siteOverview.county}}</p>
-               <p><strong>Region: </strong>{{report.siteOverview.local_authority}}</p>
-               <p><strong>Ward: </strong>{{report.siteOverview.ward}}</p>
-               <p><strong>Parish: </strong>{{report.siteOverview.parish}}</p>
-            </div>
+      <div class="h-a4 w-a4 relative">
+         <div class="mx-auto flex h-full w-11/12 items-start justify-center py-10">
+            <img class="absolute flex h-4/6 w-11/12 rounded-md object-cover" src={{report.image}} alt="" />
+               <div class="transparent-card absolute bottom-24 z-10 mx-auto mt-40 flex w-2/3 flex-col items-start rounded-md p-10">
+                  <div class="flex flex-col w-full">
+                     <h1 class="text-4xl font-bold tracking-wide">Site Assessment Report</h1>
+                     <ul class="mt-8 space-y-2 text-sm text-gray-900">
+                        <li class="flex justify-start items-center">
+                           <i class="bx bxs-building-house text-conifer-500"></i>
+                           <span class="ml-2 leading-relaxed">{{report.title}}</span>
+                        </li>
+                        <li class="flex justify-start items-center">
+                           <i class="bx bxs-map text-conifer-500"></i>
+                           <span class="ml-2 leading-relaxed">{{report.constraintName}}</span>
+                        </li>
+                        <li class="flex justify-start items-center">
+                           <i class="bx bxs-map-pin text-conifer-500"></i>
+                           <span class="ml-2 leading-relaxed">{{report.address}}</span>
+                        </li>
+                        {{!-- 
+                        <li class="flex justify-start items-center">
+                           <i class="bx bx-time-five text-conifer-500"></i>
+                           <span class="ml-2 leading-relaxed">Report generated {{created.ago}}</span>
+                        </li>
+                        --}}
+                     </ul>
+                  </div>
+                  <div class="mt-12 flex flex-col justify-center w-full">
+                     <h4 class="text-havelock-blue-500 mb-2 text-sm font-semibold uppercase tracking-wide">BASIC SITE DETAILS</h4>
+                     <div class="grid w-full grid-cols-8 text-sm">
+                        <div class="col-span-2 grid-rows-5 space-y-1 font-semibold text-gray-500">
+                           <p>Region</p>
+                           <p>Local Authority</p>
+                           <p>Region</p>
+                           <p>Ward</p>
+                           <p>Parish</p>
+                        </div>
+                        <div class="col-span-6 grow grid-rows-5 space-y-1">
+                           <p>{{report.siteOverview.region}}</p>
+                           <p>{{report.siteOverview.county}}</p>
+                           <p>{{report.siteOverview.local_authority}}</p>
+                           <p>{{report.siteOverview.ward}}</p>
+                           <p>{{report.siteOverview.parish}}</p>
+                        </div>
+                     </div>   
+
+
+
+                  </div>
+               </div>
+
          </div>
       </div>
-      {{!--<div class="datasets-page">
+      {{!-- 
+      <div class="page-break"></div>
+      --}}
+      {{!--
+      <div class="datasets-page">
          {{#each report.datasets}}
          <div class="dataset-card">
             <div class="dataset-image">
@@ -118,11 +149,10 @@
                      </div>
                   </div>
                   <div class="risk-level">
-                    {{#each (array 1 2 3 4 5)}}
-                      <div class="mt-2 h-2 w-1/5 rounded-md {{calculateBackgroundColor @index 3}}"></div>
-                    {{/each}}
+                     {{#each (array 1 2 3 4 5)}}
+                     <div class="mt-2 h-2 w-1/5 rounded-md {{calculateBackgroundColor @index 3}}"></div>
+                     {{/each}}
                   </div>
-
                </div>
                <div class="dataset-report-item">
                   <i class='bx bx-info-circle'></i>
