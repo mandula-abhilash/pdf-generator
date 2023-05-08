@@ -7,10 +7,10 @@
       <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
       <style>
          @media print {
-         .page-break {
-         break-after: page;
-         page-break-after: always;
-         }
+            .page-break {
+               break-after: page;
+               page-break-after: always;
+            }  
          }
          .transparent-card {
          box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);
@@ -24,7 +24,7 @@
       {{!-- 
       <div class="bg-red-200 h-[346mm] w-full"></div>
       --}}
-      <div class="h-a4 w-a4 relative">
+      <div class="h-a4 w-a4 relative hidden">
          <div class="flex h-full w-11/12 mx-auto items-center justify-center">
             <img class="absolute flex rounded-md w-11/12 border border-gray-900 object-cover" src="{{imagesPath}}/coverimage.jpeg" alt="" />
             <div class="absolute bottom-20 right-14 flex w-full max-w-sm flex-col flex-wrap items-end rounded-md text-sm leading-relaxed text-gray-900">
@@ -37,7 +37,7 @@
             </div>
          </div>
       </div>
-      <div class="h-a4 w-a4 relative">
+      <div class="h-a4 w-a4 relative hidden">
          <div class="mx-auto flex h-full w-11/12 items-start justify-center py-10">
             <img class="absolute flex h-4/6 w-11/12 rounded-md object-cover" src={{report.image}} alt="" />
                <div class="transparent-card absolute bottom-24 z-10 mx-auto mt-40 flex w-2/3 flex-col items-start rounded-md p-10">
@@ -82,17 +82,31 @@
                            <p>{{report.siteOverview.parish}}</p>
                         </div>
                      </div>   
-
-
-
                   </div>
                </div>
-
          </div>
       </div>
-      {{!-- 
-      <div class="page-break"></div>
-      --}}
+      
+         {{#if hasDatasets}}
+            {{#each groupedDatasets}}
+               <div class="page-break">
+                  {{#each this}}
+                  <div class="dataset my-2 mx-2">
+                     <div class="flex h-[96mm] w-full text-red-500 bg-red-100 p-2 rounded-md">{{this.name}}</div>
+                  </div>
+                  {{/each}}
+               </div>
+            {{/each}}
+{{/if}}
+      {{!-- </div> --}}
+      
+      {{!-- <div class="h-a4 w-a4 mx-auto mt-3 relative rounded-md border border-gray-900 bg-green-100">
+         <div class="m-6 flex w-full flex-col">
+            <div class="flex h-[97mm] w-full">1</div>
+            <div class="flex h-[97mm] w-full">2</div>
+            <div class="flex h-[97mm] w-full">3</div>
+         </div>
+      </div> --}}
       {{!--
       <div class="datasets-page">
          {{#each report.datasets}}

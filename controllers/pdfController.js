@@ -3,13 +3,16 @@ import fs from "fs";
 import path from "path";
 import puppeteer from "puppeteer";
 import handlebars from "handlebars";
-import TimeAgo from "javascript-time-ago";
-
-import en from "javascript-time-ago/locale/en";
-
-TimeAgo.addDefaultLocale(en);
 
 import { report } from "./sampleReport.js";
+
+const splitIntoGroups = (datasets, groupSize) => {
+  const result = [];
+  for (let i = 0; i < datasets.length; i += groupSize) {
+    result.push(datasets.slice(i, i + groupSize));
+  }
+  return result;
+};
 
 // @desc    Generate PDF
 // @route   GET /api/generate-pdf
@@ -44,22 +47,27 @@ const generatePDF = asyncHandler(async (req, res) => {
     const imagesPath = `http://localhost:3002/images`;
     const cssPath = `http://localhost:3002/styles/tailwind.css`;
 
-    const timeAgo = new TimeAgo("en-US");
+    const hasDatasets = report.datasets && report.datasets.length > 0;
+
+    let groupedDatasets = [];
+
+    if (hasDatasets) {
+      groupedDatasets = splitIntoGroups(report.datasets, 3);
+    }
 
     const data = {
       imagesPath: imagesPath,
       cssPath: cssPath,
       report: report,
-      created: {
-        date: new Date(report.createdAt.$date)
-          .toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-          })
-          .replace(/,/g, ""),
-        ago: timeAgo.format(new Date(report.createdAt.$date)),
-      },
+      created: new Date(report.createdAt.$date)
+        .toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        })
+        .replace(/,/g, ""),
+      hasDatasets: hasDatasets,
+      groupedDatasets: groupedDatasets,
     };
 
     handlebars.registerHelper("array", function (...args) {
@@ -88,6 +96,26 @@ const generatePDF = asyncHandler(async (req, res) => {
         return background;
       }
     );
+
+    handlebars.registerHelper("add", function (a, b) {
+      return a + b;
+    });
+
+    handlebars.registerHelper("mod", function (a, b) {
+      return a % b;
+    });
+
+    handlebars.registerHelper("eq", function (a, b) {
+      return a === b;
+    });
+
+    handlebars.registerHelper("ne", function (a, b) {
+      return a !== b;
+    });
+
+    handlebars.registerHelper("and", function (a, b) {
+      return a && b;
+    });
 
     let html = template(data);
 
