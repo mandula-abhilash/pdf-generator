@@ -10,9 +10,9 @@ body {
 
 }
 
-/* Cover Page */
+/* Front Page */
 
-.coverpage {
+.front-page {
     position: relative;
     min-height: 210mm;
     height: 289mm;
@@ -21,13 +21,13 @@ body {
     border: 1px solid #000;
 }
 
-.coverpage img {
+.front-page img {
     width: 100%;
     height: 289mm;
     margin: 0;
 }
 
-.coverpage > .meta {
+.front-page > .meta {
     width: 35%;
     position: absolute;
     color: #000;
@@ -35,23 +35,36 @@ body {
     right: 0;
 }
 
-.coverpage > .meta > h4 {
-    font-size: 12pt;
-    font-weight: 400;
+.front-page > .meta > h4 {
+    font-size: 8pt;
+    font-weight: 300;
 }
 
-.coverpage > .meta > h4 > strong {
+.front-page > .meta > h4 > strong {
     display: block;
     font-weight: bold;
 }
 
-.coverpage > .meta > p {
+.front-page > .meta > p {
     margin: 0;
-    font-size: 10pt;
+    font-size: 8pt;
+}
+.front-page > .meta > p > span.tab {
+    display: inline-block;
+    margin-left: 13px;
 }
 
-/* ======== site report ============ */
-.siteReport {
+
+
+
+
+
+
+
+
+
+/* ======== Cover Page ============ */
+.cover-page {
     width: 210 mm;
     max-height: 296mm;
     height: 296 mm;
@@ -63,16 +76,16 @@ body {
     page-break-after: always;
 }
 
-.reportmap {
+.cover-page > .image {
     width: 100%;
     height: 680px;
 }
-.reportmap img{
+.cover-page > .image img{
     width: 100%;
     height: 100%;
 }
 
-.sitereportText {
+.cover-page > .card {
    width: 75%;
     margin: auto;
     padding: 40px;
@@ -89,21 +102,21 @@ body {
     background: url(../images/whitebg.png) repeat-x;
     background-size: 100%;
 }
-.sitereportText div:nth-child(2){
+.cover-page > .card div:nth-child(2){
     margin-top: 70px;
 }
 
-.sitereportText h1 {
+.cover-page > .card h1 {
     font-size: 30px;
     margin: 0 0 30px;
 }
 
-.sitereportText ul {
+.cover-page .card ul {
     margin: 0;
     padding: 0;
 }
 
-.sitereportText ul li {
+.cover-page .card ul li {
     color: #787878;
     font-size: 15px;
     font-weight: 400;
@@ -113,31 +126,31 @@ body {
     align-items: center;
 }
 
-.sitereportText ul li:nth-child(1) {
+.cover-page .card ul li:nth-child(1) {
     color: #297cc1;
     font-size: 15px;
     font-weight: 500;
     margin: 0 0 0;
 }
 
-.sitereportText ul li:nth-child(2) {
+.cover-page .card ul li:nth-child(2) {
     color: #f59e0b;
     font-size: 16px;
     font-weight: 600;
 }
 
-.sitereportText ul li img {
+.cover-page .card ul li img {
     margin-right: 7px;
 }
 
-.sitereportText h4 {
+.cover-page .card h4 {
     color: #3d9be9;
     font-size: 15px;
     font-weight: 500;
     margin: 0 0 0;
 }
 
-.sitereportText p {
+.cover-page > .card p {
     color: #787878;
     font-size: 15px;
     font-weight: 400;
@@ -145,11 +158,24 @@ body {
     margin: 10px 0 0;
 }
 
-.sitereportText p strong {
+.cover-page > .card p strong {
     font-weight: 600;
 }
 
-.datacard {
+
+
+
+
+
+
+/* Datasets Card */
+
+p a {
+    color: #3d9be9;
+    text-decoration: none;
+}
+
+.datasets-page {
     width: 100%;
     padding: 15px 5px 0;
     box-sizing: border-box;
@@ -157,7 +183,15 @@ body {
     page-break-after: avoid;
 }
 
-.mainbox {
+.datasets-page div:first-child{
+    margin-top: 0px;
+}
+.datasets-page div.dataset-card:nth-child(3n) {
+    page-break-after: always;
+    border-bottom: none;
+}
+
+.dataset-card {
     width: 100%;
     background: #fff;
     box-sizing: border-box;
@@ -166,65 +200,47 @@ body {
     height: 95mm;
     border-bottom: 2px solid #000;
 }
-.datacard div:first-child{
-    margin-top: 0px;
-}
-.datacard div.mainbox:nth-child(3n) {
-    page-break-after: always;
-    border-bottom: none;
-  }
 
-.map,
-.countrydetails{
+
+.dataset-image,
+.dataset-report{
     height: 92mm;
     background: #F9FAFB;
     float: left;
 }
 
-.map {
+.dataset-image {
     width: 37%;
     overflow: hidden;
 }
-.map img{
+.dataset-image img{
     width: 100%;
     height: 100%;
     border-radius: 5px;
+    object-fit: contain;
 }
 
-.countrydetails {
+.dataset-report {
     width: 63%;
     padding: 0 20px;
     box-sizing: border-box;
 }
 
-.cardfooter{
-    width: 100%;
-    height: 5px;
-    position: relative;
-    bottom: 14px;
-}
-.cardfooter p{
-    text-align: right;
-    font-size: 12px;
-    line-height: 20px;
-    color: #646464;
-    font-weight: 500;
-    margin: 0;
-}
 
-.mainbox h1 {
-    font-size: 14pt;
+
+.dataset-card h1 {
+    font-size: 12pt;
     color: #1f2937;
     font-weight: 600;
     margin: 0;
 }
-.mainbox h4 {
-    font-size: 12pt;
+.dataset-card h4 {
+    font-size: 10pt;
     color: #2a3442;
     font-weight: 500;
     margin: 1px 0 5px;
 }
-.cardtext {
+.dataset-report-item {
     padding: 0 0 0 25px;
     margin: 0 0 10px;
     position: relative;
@@ -232,60 +248,83 @@ body {
     float: left;
     box-sizing: border-box;
 }
-.cardtext:last-child{
+.dataset-report-item:last-child{
     margin: 0 ;
 }
 
-.cardtext > img {
+.dataset-report-item > img {
     position: absolute;
     left: 0;
     top: 2px;
     width: 18px;
 }
 
-.cardtext h3 {
-    font-size: 13px;
+.dataset-report-item h3 {
+    font-size: 10px;
     color: #1f2937;
     font-weight: 600;
     margin: 0;
 }
+
 
 .noteimg {
     width: 13px;
     position: relative !important;
 }
 
-.cardtext p {
-    font-size: 10.5pt;
-    line-height: 16pt;
+.dataset-report-item p {
+    font-size: 8pt;
+    line-height: 10pt;
     color: #1f2937;
     font-weight: 400;
     margin:0;
 }
 
-p a {
-    color: #3d9be9;
-    text-decoration: none;
-}
 
-.lavelindic {
+
+.risk-level {
     width: 100%;
     position: relative;
     top: -12px;
     margin-bottom: 12px;
 }
 
-.lavelindic div {
+.risk-level div {
     height: 2px;
     margin-right: 5px;
     width: 18%;
     border-radius: 5px;
     float: left;
 }
-.lavelindic div img{
+.risk-level div img{
     width: 100%;
     height: 100%;
     border-radius: 5px;
 }
 
+.card-footer{
+    width: 100%;
+    height: 5px;
+    position: relative;
+    bottom: 14px;
+}
 
+.card-footer p{
+    text-align: right;
+    font-size: 6px;
+    line-height: 20px;
+    color: #646464;
+    font-weight: 500;
+    margin: 0;
+}
+
+
+
+
+
+
+/* Tailwind Classes */
+.text-havelock-blue-500{
+    color: #3D9BE9;
+    font-weight: 500;
+}

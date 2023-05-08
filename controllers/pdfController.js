@@ -4,6 +4,14 @@ import path from "path";
 import pdf from "pdf-creator-node";
 import puppeteer from "puppeteer";
 import handlebars from "handlebars";
+import moment from "moment";
+import TimeAgo from "javascript-time-ago";
+
+import en from "javascript-time-ago/locale/en";
+
+TimeAgo.addDefaultLocale(en);
+
+import { report } from "./sampleReport.js";
 
 // @desc    Generate PDF
 // @route   GET /api/generate-pdf
@@ -189,12 +197,16 @@ const generatePDFUsingPuppeteer = asyncHandler(async (req, res) => {
 
 const generatePDF = asyncHandler(async (req, res) => {
   try {
+    console.time("Execution Time");
+
     const browser = await puppeteer.launch({
       headless: "new",
     });
 
     // create a new page
     const page = await browser.newPage();
+
+    page.setDefaultNavigationTimeout(600000); // 10 minutes
 
     const __dirname = path.resolve();
 
@@ -204,7 +216,7 @@ const generatePDF = asyncHandler(async (req, res) => {
     );
 
     const source = await fs.readFileSync(
-      path.join(__dirname, "./templates/report.html"),
+      path.join(__dirname, "./templates/report.handlebars"),
       "utf-8"
     );
 
@@ -213,10 +225,34 @@ const generatePDF = asyncHandler(async (req, res) => {
     const imagesPath = `http://localhost:3002/images`;
     const cssPath = `http://localhost:3002/styles/style.css`;
 
+    const timeAgo = new TimeAgo("en-US");
+
     const data = {
       imagesPath: imagesPath,
       cssPath: cssPath,
+      report: report,
+      created: {
+        date: new Date(report.createdAt.$date)
+          .toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          })
+          .replace(/,/g, ""),
+        ago: timeAgo.format(new Date(report.createdAt.$date)),
+      },
     };
+
+    handlebars.registerHelper("formatDate", (date) => {
+      return moment(date).format("MMM DD YYYY");
+    });
+
+    handlebars.registerHelper("formatDate", (date) => {
+      const reportDate = moment(date);
+      const currentDate = moment();
+      const weeksAgo = currentDate.diff(reportDate, "weeks");
+      return `Report generated ${weeksAgo} weeks ago`;
+    });
 
     let html = template(data);
 
@@ -252,12 +288,14 @@ const generatePDF = asyncHandler(async (req, res) => {
 
     res.set({
       "Content-Type": "application/pdf",
-      "Content-Disposition": 'attachment; filename="my-fance-invoice.pdf"',
+      "Content-Disposition": `attachment; filename="${report._id.$oid}.pdf"`,
     });
 
     res.send(pdfBuffer);
   } catch (error) {
     console.log(error);
+  } finally {
+    console.timeEnd("Execution Time");
   }
 });
 

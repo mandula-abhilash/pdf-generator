@@ -1,569 +1,157 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <title>Page Title</title>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-</head>
-
-<body>
-  <div class="coverpage">
-    <img src="{{imagesPath}}/coverimage.jpeg" alt="" />
-    <div class="meta">
-      <h4>
-        <strong>Site Assessment Report</strong>Field Street, Willenhall
-      </h4>
-      <p>Produced By : Abhilash Mandula</p>
-      <p>Date Produced : 22nd April 2023</p>
-    </div>
-  </div>
-  <div class="siteReport">
-    <div class="reportmap">
-      <img src="{{imagesPath}}/cover-image.png" alt="" />
-    </div>
-
-    <div class="sitereportText">
-      <div>
-        <h1>Site Assessment Report</h1>
-        <ul>
-          <li>
-            <img src="{{imagesPath}}/rep1.jpg" />Site overview report demo
-            to Andy
-          </li>
-          <li><img src="{{imagesPath}}/rep2.jpg" />site overview</li>
-          <li>
-            <img src="{{imagesPath}}/rep3.jpg" />38 Dartmouth Rd, cannock
-            WS11 1HF, UK
-          </li>
-          <li>
-            <img src="{{imagesPath}}/rep4.jpg" />Report generated 3 weeks
-            ago
-          </li>
-        </ul>
+   <head>
+      <title>{{report.title}}</title>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   </head>
+   <body>
+      <div class="front-page">
+         <img src="{{imagesPath}}/coverimage.jpeg" alt="" />
+         <div class="meta">
+            <h4>
+               <strong>Site Assessment Report</strong>{{report.address}}
+            </h4>
+            <p>Produced By <span class="tab">: {{report.author}}</span></p>
+            <p>Date Produced : {{created.date}}</p>
+         </div>
       </div>
-      <div>
-        <h4>BASIC SITE DETAILS</h4>
-        <p><strong>Region: </strong>West Midlands</p>
-        <p><strong>Local Authority: </strong>Staffordshire</p>
-        <p><strong>Region: </strong>Cannock Chase Lpa</p>
-        <p><strong>Ward: </strong>Cannock West</p>
-        <p><strong>Parish: </strong></p>
+      <div class="cover-page">
+         <div class="image">
+            <img src="{{imagesPath}}/cover-image.png" alt="" />
+         </div>
+         <div class="card">
+            <div>
+               <h1>Site Assessment Report</h1>
+               <p>{{imagesPath}}/rep1.jpg</p>
+               <ul>
+                  <li>
+                     <img src="{{imagesPath}}/rep1.jpg" />{{report.title}}
+                  </li>
+                  <li><img src="{{imagesPath}}/rep2.jpg" />{{report.constraintName}}</li>
+                  <li>
+                     <img src="{{imagesPath}}/rep3.jpg" />{{report.address}}
+                  </li>
+                  <li>
+                     <img src="{{imagesPath}}/rep4.jpg" />Report generated {{created.ago}}
+                  </li>
+               </ul>
+            </div>
+            <div>
+               <h4>BASIC SITE DETAILS</h4>
+               <p><strong>Region: </strong>{{report.siteOverview.region}}</p>
+               <p><strong>Local Authority: </strong>{{report.siteOverview.county}}</p>
+               <p><strong>Region: </strong>{{report.siteOverview.local_authority}}</p>
+               <p><strong>Ward: </strong>{{report.siteOverview.ward}}</p>
+               <p><strong>Parish: </strong>{{report.siteOverview.parish}}</p>
+            </div>
+         </div>
       </div>
-    </div>
-  </div>
-  <div class="datacard" style="background-color: red;">
-    <div class="mainbox">
-      <div class="map">
-        <img src="{{imagesPath}}/cover-image.png" alt="" />
+      {{!-- 
+      <div class="card">
+         <ul>
+            <p>Datasets</p>
+            {{#each report.datasets}}
+            <li>
+               <h2>{{name}}</h2>
+               <img src="{{image}}" alt="{{name}}" width="100" />
+               <p>Group: {{group}}</p>
+               <p>Risk Level - Current: {{riskLevel.current}}, Automated: {{riskLevel.automated}}</p>
+               {{#if riskLevel.customized}}
+               <p>Risk Level - Customized: {{riskLevel.customized}}</p>
+               {{/if}}
+               <p>Message: {{{message.automated}}}</p>
+               <p>Importance: {{importance.number}} - {{importance.value}}</p>
+            </li>
+            {{/each}}
+         </ul>
       </div>
-      <div class="countrydetails">
-        <h1>Country</h1>
-        <h4>Boundaries</h4>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon1.jpg" alt="" />
-          <h3>Automated Report</h3>
-          <p>The selected location is within the <a href="#">staffordshire</a> country</p>
-        </div>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon2.jpg" alt="" />
-          <h3>Custom Noted</h3>
-          <p>change view and risk level <a href="#"><img src="{{imagesPath}}/icon4.jpg" alt="" class="noteimg" /></a>
-          </p>
-        </div>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon3.jpg" alt="" />
-          <h3>Risk Level</h3>
-          <p>High Risk</p>
-          <div class="lavelindic">
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
+      --}}
+      <div class="datasets-page">
+         {{#each report.datasets}}
+         <div class="dataset-card">
+            <div class="dataset-image">
+               <a href={{image}}><img src="{{image}}" alt="" /></a>
             </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
+            <div class="dataset-report">
+               <h1>{{name}}</h1>
+               <h4>{{group}}</h4>
+               <div class="dataset-report-item">
+                  <img src="{{imagesPath}}/icon1.jpg" alt="" />
+                  <h3>Automated Report</h3>
+                  {{#if message.automated}}
+                  <p>{{{message.automated}}}</p>
+                  {{/if}}
+               </div>
+               <div class="dataset-report-item">
+                  <img src="{{imagesPath}}/icon2.jpg" alt="" />
+                  <h3>Custom Notes</h3>
+                  {{#if message.customized}}
+                  <p>{{{message.customized}}}</p>
+                  {{/if}}
+               </div>
+               <div class="dataset-report-item">
+                  <img src="{{imagesPath}}/icon3.jpg" alt="" />
+                  <h3>Risk Level</h3>
+                  {{#if riskLevel.customized}}
+                  <p>{{riskLevel.customized}}</p>
+                  {{else}}
+                  {{#if riskLevel.automated}}
+                  <p>{{riskLevel.automated}}</p>
+                  {{/if}}
+                  {{/if}}
+                  <div class="risk-level">
+                     <div>
+                        <img src="{{imagesPath}}/indecbg.jpg" alt="" />
+                     </div>
+                     <div>
+                        <img src="{{imagesPath}}/indecbg.jpg" alt="" />
+                     </div>
+                     <div>
+                        <img src="{{imagesPath}}/indecbg.jpg" alt="" />
+                     </div>
+                     <div>
+                        <img src="{{imagesPath}}/indecbg.jpg" alt="" />
+                     </div>
+                     <div>
+                        <img src="{{imagesPath}}/indecbg.jpg" alt="" />
+                     </div>
+                  </div>
+               </div>
+               <div class="dataset-report-item">
+                  <img src="{{imagesPath}}/icon7.jpg" alt="" />
+                  <h3>Importance</h3>
+                  <p>{{importance.value}}</p>
+                  <div class="risk-level">
+                     <div>
+                        <img src="{{imagesPath}}/indecbg.jpg" alt="" />
+                     </div>
+                     <div>
+                        <img src="{{imagesPath}}/indecbg.jpg" alt="" />
+                     </div>
+                     <div>
+                        <img src="{{imagesPath}}/indecbg.jpg" alt="" />
+                     </div>
+                     <div>
+                        <img src="{{imagesPath}}/indecbg.jpg" alt="" />
+                     </div>
+                     <div>
+                        <img src="{{imagesPath}}/indecbg.jpg" alt="" />
+                     </div>
+                  </div>
+               </div>
+               <div class="dataset-report-item">
+                  <img src="{{imagesPath}}/icon6.jpg" alt="" />
+                  <h3>Provider</h3>
+                  <p>office for National statistics</p>
+               </div>
+               <div class="card-footer">
+                  <p>This is footer text</p>
+               </div>
             </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-          </div>
-        </div>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon7.jpg" alt="" />
-          <h3>Importance</h3>
-          <p>Very Low</p>
-          <div class="lavelindic">
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-          </div>
-        </div>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon6.jpg" alt="" />
-          <h3>Provider</h3>
-          <p>office for National statistics office for National statistics</p>
-        </div>
-        <div class="cardfooter">
-          <p>This is footer text</p>
-        </div>
+         </div>
+         {{/each}}
       </div>
-    </div>
-    <div class="mainbox">
-      <div class="map">
-        <img src="{{imagesPath}}/cover-image.png" alt="" />
       </div>
-      <div class="countrydetails">
-        <h1>Country</h1>
-        <h4>Boundaries</h4>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon1.jpg" alt="" />
-          <h3>Automated Report</h3>
-          <p>The selected location is within the <a href="#">staffordshire</a> country</p>
-        </div>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon2.jpg" alt="" />
-          <h3>Custom Noted</h3>
-          <p>change view and risk level <a href="#"><img src="{{imagesPath}}/icon4.jpg" alt="" class="noteimg" /></a>
-          </p>
-        </div>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon3.jpg" alt="" />
-          <h3>Risk Level</h3>
-          <p>High Risk</p>
-          <div class="lavelindic">
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-          </div>
-        </div>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon7.jpg" alt="" />
-          <h3>Importance</h3>
-          <p>Very Low</p>
-          <div class="lavelindic">
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-          </div>
-        </div>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon6.jpg" alt="" />
-          <h3>Provider</h3>
-          <p>office for National statistics</p>
-        </div>
-        <div class="cardfooter">
-          <p>This is footer text</p>
-        </div>
-      </div>
-    </div>
-    <div class="mainbox">
-      <div class="map">
-        <img src="{{imagesPath}}/cover-image.png" alt="" />
-      </div>
-      <div class="countrydetails">
-        <h1>Country</h1>
-        <h4>Boundaries</h4>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon1.jpg" alt="" />
-          <h3>Automated Report</h3>
-          <p>The selected location is within the <a href="#">staffordshire</a> country</p>
-        </div>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon2.jpg" alt="" />
-          <h3>Custom Noted</h3>
-          <p>change view and risk level <a href="#"><img src="{{imagesPath}}/icon4.jpg" alt="" class="noteimg" /></a>
-          </p>
-        </div>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon3.jpg" alt="" />
-          <h3>Risk Level</h3>
-          <p>High Risk</p>
-          <div class="lavelindic">
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-          </div>
-        </div>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon7.jpg" alt="" />
-          <h3>Importance</h3>
-          <p>Very Low</p>
-          <div class="lavelindic">
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-          </div>
-        </div>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon6.jpg" alt="" />
-          <h3>Provider</h3>
-          <p>office for National statistics</p>
-        </div>
-        <div class="cardfooter">
-          <p>This is footer text</p>
-        </div>
-      </div>
-    </div>
-    <div class="mainbox">
-      <div class="map">
-        <img src="{{imagesPath}}/cover-image.png" alt="" />
-      </div>
-      <div class="countrydetails">
-        <h1>Country</h1>
-        <h4>Boundaries</h4>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon1.jpg" alt="" />
-          <h3>Automated Report</h3>
-          <p>The selected location is within the <a href="#">staffordshire</a> country</p>
-        </div>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon2.jpg" alt="" />
-          <h3>Custom Noted</h3>
-          <p>change view and risk level <a href="#"><img src="{{imagesPath}}/icon4.jpg" alt="" class="noteimg" /></a>
-          </p>
-        </div>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon3.jpg" alt="" />
-          <h3>Risk Level</h3>
-          <p>High Risk</p>
-          <div class="lavelindic">
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-          </div>
-        </div>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon7.jpg" alt="" />
-          <h3>Importance</h3>
-          <p>Very Low</p>
-          <div class="lavelindic">
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-          </div>
-        </div>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon6.jpg" alt="" />
-          <h3>Provider</h3>
-          <p>office for National statistics</p>
-        </div>
-        <div class="cardfooter">
-          <p>This is footer text</p>
-        </div>
-      </div>
-    </div>
-    <div class="mainbox">
-      <div class="map">
-        <img src="{{imagesPath}}/cover-image.png" alt="" />
-      </div>
-      <div class="countrydetails">
-        <h1>Country</h1>
-        <h4>Boundaries</h4>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon1.jpg" alt="" />
-          <h3>Automated Report</h3>
-          <p>The selected location is within the <a href="#">staffordshire</a> country</p>
-        </div>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon2.jpg" alt="" />
-          <h3>Custom Noted</h3>
-          <p>change view and risk level <a href="#"><img src="{{imagesPath}}/icon4.jpg" alt="" class="noteimg" /></a>
-          </p>
-        </div>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon3.jpg" alt="" />
-          <h3>Risk Level</h3>
-          <p>High Risk</p>
-          <div class="lavelindic">
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-          </div>
-        </div>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon7.jpg" alt="" />
-          <h3>Importance</h3>
-          <p>Very Low</p>
-          <div class="lavelindic">
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-          </div>
-        </div>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon6.jpg" alt="" />
-          <h3>Provider</h3>
-          <p>office for National statistics</p>
-        </div>
-        <div class="cardfooter">
-          <p>This is footer text</p>
-        </div>
-      </div>
-    </div>
-    <div class="mainbox">
-      <div class="map">
-        <img src="{{imagesPath}}/cover-image.png" alt="" />
-      </div>
-      <div class="countrydetails">
-        <h1>Country</h1>
-        <h4>Boundaries</h4>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon1.jpg" alt="" />
-          <h3>Automated Report</h3>
-          <p>The selected location is within the <a href="#">staffordshire</a> country</p>
-        </div>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon2.jpg" alt="" />
-          <h3>Custom Noted</h3>
-          <p>change view and risk level <a href="#"><img src="{{imagesPath}}/icon4.jpg" alt="" class="noteimg" /></a>
-          </p>
-        </div>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon3.jpg" alt="" />
-          <h3>Risk Level</h3>
-          <p>High Risk</p>
-          <div class="lavelindic">
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-          </div>
-        </div>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon7.jpg" alt="" />
-          <h3>Importance</h3>
-          <p>Very Low</p>
-          <div class="lavelindic">
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-          </div>
-        </div>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon6.jpg" alt="" />
-          <h3>Provider</h3>
-          <p>office for National statistics</p>
-        </div>
-        <div class="cardfooter">
-          <p>This is footer text</p>
-        </div>
-      </div>
-    </div>
-    <div class="mainbox">
-      <div class="map">
-        <img src="{{imagesPath}}/cover-image.png" alt="" />
-      </div>
-      <div class="countrydetails">
-        <h1>Country</h1>
-        <h4>Boundaries</h4>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon1.jpg" alt="" />
-          <h3>Automated Report</h3>
-          <p>The selected location is within the <a href="#">staffordshire</a> country</p>
-        </div>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon2.jpg" alt="" />
-          <h3>Custom Noted</h3>
-          <p>change view and risk level <a href="#"><img src="{{imagesPath}}/icon4.jpg" alt="" class="noteimg" /></a>
-          </p>
-        </div>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon3.jpg" alt="" />
-          <h3>Risk Level</h3>
-          <p>High Risk</p>
-          <div class="lavelindic">
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-          </div>
-        </div>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon7.jpg" alt="" />
-          <h3>Importance</h3>
-          <p>Very Low</p>
-          <div class="lavelindic">
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-            <div>
-              <img src="{{imagesPath}}/indecbg.jpg" alt="" />
-            </div>
-          </div>
-        </div>
-        <div class="cardtext">
-          <img src="{{imagesPath}}/icon6.jpg" alt="" />
-          <h3>Provider</h3>
-          <p>office for National statistics</p>
-        </div>
-        <div class="cardfooter">
-          <p>This is footer text</p>
-        </div>
-      </div>
-    </div>
-
-
-
-
-
-  </div>
-  </div>
-</body>
-
+   </body>
 </html>
