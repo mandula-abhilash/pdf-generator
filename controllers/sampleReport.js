@@ -24,7 +24,7 @@ export const report = {
       group: "Land Designations",
       riskLevel: {
         current: 0,
-        automated: "Low Risk",
+        automated: "Very Low",
         customized: "",
       },
       message: {
@@ -32,8 +32,8 @@ export const report = {
           'The nearest Country Park to your selected location is <span class="text-havelock-blue-500">Cannock Chase</span>, located more than <span class="text-havelock-blue-500">5.3 km</span> away',
       },
       importance: {
-        number: 3,
-        value: "Medium",
+        number: 4,
+        value: "Very High",
       },
       _id: {
         $oid: "645347ca4bfedf1c37b9f52c",
@@ -50,8 +50,8 @@ export const report = {
         attribution: "Office for National Statistics",
       },
       riskLevel: {
-        current: 0,
-        automated: "Not Applicable",
+        current: 1,
+        automated: "Low",
         customized: "",
       },
       message: {
@@ -59,8 +59,8 @@ export const report = {
           'The selected location is within the <span class="text-havelock-blue-500">Cannock Chase Lpa</span> Local Authority',
       },
       importance: {
-        number: 1,
-        value: "Very Low",
+        number: 3,
+        value: "High",
       },
       _id: {
         $oid: "645347ca4bfedf1c37b9f52d",
@@ -72,8 +72,8 @@ export const report = {
       name: "Heritage Coasts",
       group: "Land Designations",
       riskLevel: {
-        current: 0,
-        automated: "Low Risk",
+        current: 2,
+        automated: "Medium",
         customized: "",
       },
       message: {
@@ -81,7 +81,7 @@ export const report = {
           'The nearest Heritage Coast to your selected location is <span class="text-havelock-blue-500">Purbeck</span>, located more than <span class="text-havelock-blue-500">215 km</span> away',
       },
       importance: {
-        number: 3,
+        number: 2,
         value: "Medium",
       },
       _id: {
@@ -99,8 +99,8 @@ export const report = {
         attribution: "Office for National Statistics",
       },
       riskLevel: {
-        current: 0,
-        automated: "Not Applicable",
+        current: 3,
+        automated: "High",
         customized: "",
       },
       message: {
@@ -109,7 +109,7 @@ export const report = {
       },
       importance: {
         number: 1,
-        value: "Very Low",
+        value: "Low",
       },
       _id: {
         $oid: "645347ca4bfedf1c37b9f52f",
@@ -121,8 +121,8 @@ export const report = {
       name: "Ancient Woodland",
       group: "Land Designations",
       riskLevel: {
-        current: 0,
-        automated: "Low Risk",
+        current: 4,
+        automated: "Very High",
         customized: "",
       },
       message: {
@@ -130,8 +130,8 @@ export const report = {
           'The nearest Ancient Woodland to your selected location is <span class="text-havelock-blue-500">Mansty Wood</span>, located more than <span class="text-havelock-blue-500">2.7 km</span> away',
       },
       importance: {
-        number: 3,
-        value: "Medium",
+        number: 0,
+        value: "Very Low",
       },
       _id: {
         $oid: "645347ca4bfedf1c37b9f530",
@@ -148,7 +148,7 @@ export const report = {
         attribution: "Office for National Statistics",
       },
       riskLevel: {
-        current: 0,
+        current: 5,
         automated: "Not Applicable",
         customized: "",
       },

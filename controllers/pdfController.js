@@ -90,51 +90,83 @@ const generatePDF = asyncHandler(async (req, res) => {
         let background = "bg-gray-400";
 
         if (riskLevel === "Low Risk" && index === 0) {
-          background = "bg-green-500";
+          background = "bg-green-600";
         } else if (riskLevel === "Moderate Low" && index <= 1) {
-          background = "bg-yellow-400";
+          background = "bg-green-400";
         } else if (riskLevel === "Moderate" && index <= 2) {
-          background = "bg-yellow-600";
+          background = "bg-yellow-500";
         } else if (riskLevel === "Moderate High" && index <= 3) {
-          background = "bg-red-500";
+          background = "bg-red-400";
         } else if (riskLevel === "High Risk" && index <= 4) {
-          background = "bg-red-700";
+          background = "bg-red-600";
         }
 
         return background;
       }
     );
 
-    handlebars.registerHelper("getBarColor", function (index, riskLevel) {
-      console.log("index:", index);
-      console.log("riskLevel:", riskLevel);
-      let color;
-      if (index <= riskLevel) {
-        switch (riskLevel) {
-          case 0:
-            color = "bg-green-500";
-            break;
-          case 1:
-            color = "bg-yellow-400";
-            break;
-          case 2:
-            color = "bg-yellow-600";
-            break;
-          case 3:
-            color = "bg-red-500";
-            break;
-          case 4:
-            color = "bg-red-700";
-            break;
-          default:
-            color = "bg-gray-400";
+    handlebars.registerHelper(
+      "getRiskLevelBarColor",
+      function (index, riskLevel) {
+        let color;
+        if (index <= riskLevel) {
+          switch (riskLevel) {
+            case 0:
+              color = "bg-green-600";
+              break;
+            case 1:
+              color = "bg-green-400";
+              break;
+            case 2:
+              color = "bg-yellow-500";
+              break;
+            case 3:
+              color = "bg-red-400";
+              break;
+            case 4:
+              color = "bg-red-600";
+              break;
+            default:
+              color = "bg-gray-100";
+          }
+        } else {
+          color = "bg-gray-100";
         }
-      } else {
-        color = "bg-gray-400";
+        return color;
       }
-      console.log(color);
-      return color;
-    });
+    );
+
+    handlebars.registerHelper(
+      "getImportanceLevelBarColor",
+      function (index, importance) {
+        let color;
+        if (index <= importance) {
+          switch (index) {
+            case 0:
+              color = "bg-gradient-to-r from-blue-100 via-blue-100 to-blue-200";
+              break;
+            case 1:
+              color = "bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400";
+              break;
+            case 2:
+              color = "bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600";
+              break;
+            case 3:
+              color = "bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800";
+              break;
+            case 4:
+              color =
+                "rounded-r-md bg-gradient-to-r from-blue-800 via-blue-900 to-blue-950";
+              break;
+            default:
+              color = "bg-gray-100";
+          }
+        } else {
+          color = "bg-gray-100";
+        }
+        return color;
+      }
+    );
 
     handlebars.registerHelper("add", function (a, b) {
       return a + b;
@@ -175,7 +207,7 @@ const generatePDF = asyncHandler(async (req, res) => {
 
     const pdfBuffer = await page.pdf({
       format: "A4",
-      printBackground: true,
+      printBackground: true, // for glassmorphism to work
     });
 
     await browser.close();
