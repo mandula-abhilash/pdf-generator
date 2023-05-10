@@ -32,11 +32,6 @@ const generatePDF = asyncHandler(async (req, res) => {
 
     const __dirname = path.resolve();
 
-    const css = fs.readFileSync(
-      path.join(__dirname, "./uploads/tailwind.css"),
-      "utf8"
-    );
-
     const source = await fs.readFileSync(
       path.join(__dirname, "./templates/report-tailwind.handlebars"),
       "utf-8"
@@ -191,7 +186,7 @@ const generatePDF = asyncHandler(async (req, res) => {
 
     let html = template(data);
 
-    html = html.replace("</head>", `<style>${css}</style></head>`);
+    // html = html.replace("</head>", `<style>${css}</style></head>`);
 
     await page.setContent(html, {
       waitUntil: "domcontentloaded",
