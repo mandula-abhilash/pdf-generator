@@ -9,7 +9,7 @@ const __dirname = path.resolve();
 
 // http://localhost:3002/api/generate-pdf
 
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "uploads")));
 
 app.use("/api", pdfRoutes);
 

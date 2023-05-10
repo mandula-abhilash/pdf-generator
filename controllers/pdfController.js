@@ -33,7 +33,7 @@ const generatePDF = asyncHandler(async (req, res) => {
     const __dirname = path.resolve();
 
     const css = fs.readFileSync(
-      path.join(__dirname, "./public/styles/tailwind.css"),
+      path.join(__dirname, "./uploads/tailwind.css"),
       "utf8"
     );
 
@@ -44,8 +44,9 @@ const generatePDF = asyncHandler(async (req, res) => {
 
     const template = handlebars.compile(source);
 
-    const imagesPath = `http://localhost:3002/images`;
-    const cssPath = `http://localhost:3002/styles/tailwind.css`;
+    const imagesPath = `http://localhost:3002`;
+    // const imagesPath = `../uploads`;
+    const cssPath = `http://localhost:3002/tailwind.css`;
 
     const hasDatasets = report.datasets && report.datasets.length > 0;
 
