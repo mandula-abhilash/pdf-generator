@@ -127,10 +127,10 @@ const generatePDF = asyncHandler(async (req, res) => {
               color = "bg-red-600";
               break;
             default:
-              color = "bg-gray-100";
+              color = "bg-white";
           }
         } else {
-          color = "bg-gray-100";
+          color = "bg-white";
         }
         return color;
       }
@@ -159,10 +159,10 @@ const generatePDF = asyncHandler(async (req, res) => {
                 "rounded-r-md bg-gradient-to-r from-blue-800 via-blue-900 to-blue-950";
               break;
             default:
-              color = "bg-gray-100";
+              color = "bg-white";
           }
         } else {
-          color = "bg-gray-100";
+          color = "bg-white";
         }
         return color;
       }

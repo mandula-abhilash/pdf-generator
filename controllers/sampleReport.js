@@ -115,54 +115,54 @@ export const report = {
         $oid: "645347ca4bfedf1c37b9f52f",
       },
     },
-    // {
-    //   image:
-    //     "https://planning-applications-bucket.s3.eu-west-2.amazonaws.com/645347ca4bfedf1c37b9f52b/ancient_woodland.png",
-    //   name: "Ancient Woodland",
-    //   group: "Land Designations",
-    //   riskLevel: {
-    //     current: 4,
-    //     automated: "Very High",
-    //     customized: "",
-    //   },
-    //   message: {
-    //     automated:
-    //       'The nearest Ancient Woodland to your selected location is <span class="text-havelock-blue-500">Mansty Wood</span>, located more than <span class="text-havelock-blue-500">2.7 km</span> away',
-    //   },
-    //   importance: {
-    //     number: 0,
-    //     value: "Very Low",
-    //   },
-    //   _id: {
-    //     $oid: "645347ca4bfedf1c37b9f530",
-    //   },
-    // },
-    // {
-    //   image:
-    //     "https://planning-applications-bucket.s3.eu-west-2.amazonaws.com/645347ca4bfedf1c37b9f52b/parish.png",
-    //   name: "Parish",
-    //   group: "Boundaries",
-    //   provider: {
-    //     name: "Office for National Statistics",
-    //     url: "https://www.ons.gov.uk/",
-    //     attribution: "Office for National Statistics",
-    //   },
-    //   riskLevel: {
-    //     current: 5,
-    //     automated: "Not Applicable",
-    //     customized: "",
-    //   },
-    //   message: {
-    //     automated: "The selected location is not within any Parish",
-    //   },
-    //   importance: {
-    //     number: 1,
-    //     value: "Very Low",
-    //   },
-    //   _id: {
-    //     $oid: "645347ca4bfedf1c37b9f531",
-    //   },
-    // },
+    {
+      image:
+        "https://planning-applications-bucket.s3.eu-west-2.amazonaws.com/645347ca4bfedf1c37b9f52b/ancient_woodland.png",
+      name: "Ancient Woodland",
+      group: "Land Designations",
+      riskLevel: {
+        current: 4,
+        automated: "Very High",
+        customized: "",
+      },
+      message: {
+        automated:
+          'The nearest Ancient Woodland to your selected location is <span class="text-havelock-blue-500">Mansty Wood</span>, located more than <span class="text-havelock-blue-500">2.7 km</span> away',
+      },
+      importance: {
+        number: 0,
+        value: "Very Low",
+      },
+      _id: {
+        $oid: "645347ca4bfedf1c37b9f530",
+      },
+    },
+    {
+      image:
+        "https://planning-applications-bucket.s3.eu-west-2.amazonaws.com/645347ca4bfedf1c37b9f52b/parish.png",
+      name: "Parish",
+      group: "Boundaries",
+      provider: {
+        name: "Office for National Statistics",
+        url: "https://www.ons.gov.uk/",
+        attribution: "Office for National Statistics",
+      },
+      riskLevel: {
+        current: 5,
+        automated: "Not Applicable",
+        customized: "",
+      },
+      message: {
+        automated: "The selected location is not within any Parish",
+      },
+      importance: {
+        number: 1,
+        value: "Very Low",
+      },
+      _id: {
+        $oid: "645347ca4bfedf1c37b9f531",
+      },
+    },
     // {
     //   image:
     //     "https://planning-applications-bucket.s3.eu-west-2.amazonaws.com/645347ca4bfedf1c37b9f52b/aonb.png",
